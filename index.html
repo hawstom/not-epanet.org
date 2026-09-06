@@ -40,8 +40,8 @@
 	<p class="lede">It is a small, free, GPL-licensed water network modelling project that
 	could not exist without EPANET, and it is careful to say so.</p>
 
-	<!-- THE DISCLAIMER IS THE PREMISE OF THE SITE, so it is the first block a
-	     reader meets and it is not below anything. The domain says "not", and a
+	<!-- THE DISCLAIMER IS THE PREMISE OF THE SITE, so it comes before the doors and
+	     before both sections; only the wordmark, the h1 and the lede precede it. The domain says "not", and a
 	     page that then spent 400 words before explaining what it is not would be
 	     using the word as a slogan. -->
 	<div class="disclaimer">
@@ -58,13 +58,13 @@
 		<ol class="reasons">
 			<li><b>To connect with EPANET users.</b> They are who this is for. And we should be
 			plain about the mechanism, because it is the reason a page can be titled this way:
-			putting EPANET's name on it is how people searching for EPANET find us. That is
-			search-engine optimisation, it worked on you if you arrived here from a search, and
-			it matters to us. We are not going to pretend otherwise.</li>
+			putting EPANET's name in our domain and in our page titles is how people
+			searching for EPANET find us. That is search-engine optimisation. It worked on
+			you if you arrived here from a search, and it matters to us. We are not going to pretend otherwise.</li>
 			<li><b>To give credit.</b> Most of what follows is a list of what we owe EPANET and
 			the people who gave it away.</li>
-			<li><b>To tell you plainly what we are not.</b> Which is this box, and the
-			reason this box is above everything else.</li>
+			<li><b>To tell you plainly what we are not.</b> Which is what this box is for,
+			and the reason it comes before anything else on the page.</li>
 		</ol>
 	</div>
 
@@ -73,13 +73,15 @@
 			<span class="label">The project</span>
 			<h3>LibreWaterNet</h3>
 			<p>Who is building it, what exists today, what it is short of, and how to take part.
-			It is looking for advisors, bug reports, and people with wish lists, not for money.</p>
+			It is looking for advisors, bug reports, power users with wish
+			lists, and non-profit directors, not for money.</p>
 			<a class="btn" href="https://librewaternet.org">librewaternet.org</a>
 		</div>
 		<div class="door">
 			<span class="label">The software</span>
 			<h3>The network editor</h3>
-			<p>Draw a looped pipe network on a map, solve it, and publish the drawing.
+			<p>Draw a looped pipe network on a map, solve it, and save or export it as an
+			EPANET file.
 			Free, no sign-up, runs in your browser, in 27 languages.</p>
 			<a class="btn" href="https://hawsedc.com/engcalcs/Looped-Network.php">Open the app</a>
 		</div>
@@ -87,10 +89,10 @@
 </div>
 
 <!-- ====================================================================== -->
-<section id="honesty">
+<section id="honesty" aria-labelledby="honesty-label honesty-h2">
 	<div class="sec-head">
-		<span class="label">Deep honesty</span>
-		<h2>What we are, said without decoration</h2>
+		<span class="label" id="honesty-label">Deep honesty</span>
+		<h2 id="honesty-h2">What we are, said without decoration</h2>
 		<p class="sub">Five things a reasonable person would want to know before trusting a
 		piece of engineering software. None of them is flattering, and that is the point of
 		putting them on the front page rather than in a footnote.</p>
@@ -98,8 +100,8 @@
 
 	<div class="item">
 		<h3>1. We are deeply dependent on EPANET</h3>
-		<p>Not just inspired by it. Not just compatible with it. Dependent on it. The specifics,
-		each one checkable in the source:</p>
+		<p>Not just inspired by it. Not just compatible with it. Dependent on it. The specifics, each one
+		listed with its source on the <a href="claims.html">claims page</a>:</p>
 		<ul class="facts">
 			<li><b>The engine is EPANET's, and it ships inside the page.</b> A 679 KB browser
 			build of OWA-EPANET 2.3.5, released 2025-02-20, is vendored in the repository and
@@ -112,12 +114,11 @@
 			moment), pressures and flows only. It has no time dimension and is not currently
 			planned to get one.</li>
 			<li><b>The interchange format is EPANET's.</b> We read and write EPANET's own
-			<code>.inp</code> file, section heading by section heading, from <code>[TITLE]</code>
-			to <code>[END]</code>, and a value you did not edit comes back out character for
+			<code>.inp</code> file, section by section across the sections we support,
+			from <code>[TITLE]</code> to <code>[END]</code>, and a value you did not edit comes back out character for
 			character.
-			<span class="qualify">We do have a native format, and it would be dishonest to say
-			otherwise: a project saves as JSON, because there are things an <code>.inp</code>
-			cannot hold. Scenarios. Saved profile paths. A background image. Map tiles and the
+			<span class="qualify">We also have a native format of our own: a project
+			saves as JSON, because there are things an <code>.inp</code> cannot hold. Scenarios. Saved profile paths. A background image. Map tiles and the
 			view you were looking at. A Text label anchored to a pipe, or one with more than one
 			line in it. Longitude and latitude for a project drawn on the world. Everything an
 			<code>.inp</code> can carry still round-trips through one, and the five things it
@@ -142,7 +143,8 @@
 			<li><b>The interface is inspired by and informed by EPANET's.</b> Its curve editor
 			and its table of assets are where ours came from, and its own five map colours are in
 			our palette unsoftened, so a reader who knows an EPANET pressure map can have that one
-			back. There are some features that are not simply downstream:
+			back, though our own shipped default is Viridis rather than EPANET's. There are
+			some features that are not simply downstream:
 			scenarios, a world map, find and replace, flexible multi-labels, and what we hope is a
 			less confusing and easier interface (menu system). And it is a web page rather than a
 			Windows program. Some of that is better and some of it is just different.</li>
@@ -160,7 +162,7 @@
 			Richard M. Stallman&rsquo;s GNU General Public License 3.0, which is aggressively
 			restrictive against locking up this work. The rationale is that this protects us all
 			against property hoarders. Talk to us about this if you see the error of our ways.</p>
-			<cite>Tom Haws, 2026-09-06</cite>
+			<footer class="attrib">Tom Haws, 2026-09-06</footer>
 		</blockquote>
 		<p>The invitation at the end of that is real. EPANET carries no licence at all, because
 		a work of the United States government has no copyright to license. Anybody may take it
@@ -171,13 +173,13 @@
 
 	<div class="item">
 		<h3>3. We are new, with all that implies</h3>
-		<p>That is the whole statement. We are not going to dress it up.</p>
-		<p>One thing worth adding, because it is the claim about ourselves that a future surprise
+		<p>We are not going to dress it up.</p>
+		<p>One thing is worth adding, because it is the claim about ourselves that a future surprise
 		cannot falsify:</p>
 		<blockquote>
 			<p>We are what we are, and it&rsquo;s good and useful and usable. But we have no idea
 			what we are not and what we don&rsquo;t know.</p>
-			<cite>Tom Haws, 2026-08-22</cite>
+			<footer class="attrib">Tom Haws, 2026-08-22</footer>
 		</blockquote>
 		<p>We do not publish a completeness claim against EPANET, and we never will. EPANET has
 		depth we keep discovering by accident.</p>
@@ -194,25 +196,25 @@
 			justification for using AI is to tell the world the highest message of heaven: That
 			they are loved and cherished forever, that they have nothing to fear, and that they
 			are not ruining everything.</p>
-			<cite>Tom Haws, 2026-09-06</cite>
+			<footer class="attrib">Tom Haws, 2026-09-06</footer>
 		</blockquote>
 	</div>
 
 	<div class="item">
-		<h3>5. We are not affiliated with anyone</h3>
+		<h3>5. Nobody has vetted this on your behalf</h3>
 		<p>No EPA affiliation, no government affiliation, no university affiliation, no sponsor,
 		no foundation, and no funding. Nobody has vetted this software on your behalf. Every
-		claim on this page is one you can check yourself, and every source is named on the
-		<a href="epanet.html">About EPANET</a> page or in the project's own repository. Where we
+		claim on this page is one you can check yourself: they are set out one by one,
+		each with its source, on the <a href="claims.html">claims page</a>. Where we
 		were not sure of a fact, we left it out.</p>
 	</div>
 </section>
 
 <!-- ====================================================================== -->
-<section id="gratitude">
+<section id="gratitude" aria-labelledby="gratitude-label gratitude-h2">
 	<div class="sec-head">
-		<span class="label">Deep gratitude</span>
-		<h2>Almost none of this is ours</h2>
+		<span class="label" id="gratitude-label">Deep gratitude</span>
+		<h2 id="gratitude-h2">Almost none of this is ours</h2>
 		<p class="sub">A list of the people and institutions whose work we are standing on,
 		with enough detail that you can go and read about them rather than take our word for it.</p>
 	</div>
@@ -253,8 +255,8 @@
 	</div>
 
 	<div class="item">
-		<h3>The software libraries we depend on</h3>
-		<p>These are the third-party pieces the network editor actually ships. All of them are
+		<h3>The software and services we depend on</h3>
+		<p>These are the third-party pieces the network editor uses. The first four are
 		vendored, meaning a copy travels with the software rather than being fetched from
 		somebody else's server while you work.</p>
 		<ul class="facts">
@@ -266,10 +268,16 @@
 			<li><b>Bootstrap 5.3.2</b>, MIT licensed, &copy; 2011-2023 The Bootstrap Authors.
 			The layout the calculator pages are built on.</li>
 			<li><b>Colour schemes for maps</b>, Apache License 2.0, &copy; 2002 Cynthia Brewer,
-			Mark Harrower, and The Pennsylvania State University. See below.</li>
+			Mark Harrower, and The Pennsylvania State University.
+			See the Cynthia Brewer entry below.</li>
 			<li><b>viridis, magma, inferno, and plasma</b>, released CC0 by Nathaniel J. Smith,
 			Stefan van der Walt, and (for viridis) Eric Firing.
 			<a href="https://github.com/BIDS/colormap">github.com/BIDS/colormap</a></li>
+		</ul>
+		<p>And two services the editor can call out to over the network. Both are off until
+		you turn them on, each asks its own separate permission, and a tile request tells
+		that service where you are looking:</p>
+		<ul class="facts">
 			<li><b>OpenStreetMap contributors</b>, whose map of the world is the ground under a
 			geographic project, and whose Nominatim service answers a place-name search.
 			Map data &copy; OpenStreetMap contributors.</li>
@@ -292,7 +300,8 @@
 		<p>Her schemes ship in our software under the Apache License 2.0, whose clause 2 fixes
 		the exact wording of the acknowledgement below and whose clauses 4 and 5 forbid using the
 		project name to endorse or promote anything. So the sentence is reproduced verbatim and
-		untranslated, and no control, heading, or product of ours is named after it. What follows
+		untranslated, and no control, menu, or feature in our software carries the
+		ColorBrewer name. What follows
 		is the licence's own text, not ours:</p>
 		<div class="finewords">
 			<p>This product includes color specifications and designs developed by Cynthia Brewer (http://colorbrewer.org/).</p>
@@ -343,7 +352,8 @@
 	<p>This page makes no request to any other server: no fonts, no scripts, no images from
 	elsewhere, no analytics, no cookies, and no storage on your device. The only outbound links
 	are the ones you can see, and they only go anywhere when you click them.</p>
-	<p><a href="epanet.html">About EPANET</a> &middot;
+	<p><a href="claims.html">Every claim, with its source</a> &middot;
+	<a href="epanet.html">About EPANET</a> &middot;
 	<a href="https://librewaternet.org">LibreWaterNet.org</a> &middot;
 	<a href="https://hawsedc.com/engcalcs/Looped-Network.php">Open the network editor</a></p>
 </footer>

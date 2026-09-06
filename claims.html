@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Every claim, with its source</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Every factual assertion on not-epanet.org, one per row, with the source it rests on. Generated from the site's own claims ledger.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="sheet-bg" aria-hidden="true"></div>
+
+<div class="sheet">
+
+<header class="topbar">
+	<div class="marks">
+		<a class="wordmark" href="./"><span class="not">Not</span> EPANET</a>
+		<a class="wordmark sister" href="https://librewaternet.org"><span class="libre">Libre</span>WaterNet</a>
+	</div>
+	<nav>
+		<a href="index.html#honesty">Honesty</a>
+		<a href="index.html#gratitude">Gratitude</a>
+		<a href="epanet.html">About EPANET</a>
+	</nav>
+</header>
+
+<main>
+
+<div class="hero">
+	<span class="label">The whole ledger</span>
+	<h1>Every claim, with its source<span class="rule-under"></span></h1>
+	<p class="lede">The front page says every claim on it is one you can check. This is where you
+	check them. One row per assertion, so each stands or falls on its own.</p>
+
+	<div class="disclaimer">
+		<span class="label">How to read this</span>
+		<p><code>EC</code> means the EngCalcs repository, which holds the software this site points
+		to. A row citing a file in it is citing the code itself. Where a claim rests on an outside
+		source, the source is linked and you can go and disagree with us.</p>
+		<p>This page is generated from the site's own working ledger, so it cannot drift from the
+		document the people maintaining the site actually use. Sections 6, 7 and 8 are the
+		uncomfortable ones: what we could not verify, what we gave up, and what we refuse to claim.</p>
+	</div>
+</div>
+
+<section>
+<div class="item">
+<p>One row per assertion, so each can be checked on its own. <code>EC</code> means the EngCalcs repository at <code>~/webdev/hawsedc.subset/engcalcs</code>. Anything we could not verify is in the last section, and is either absent from the site or flagged on the site itself.</p>
+<p>Checked 2026-09-06.</p>
+</div>
+<div class="item">
+<h3>1. The disclaimer (index.html, epanet.html)</h3>
+<div class="table-scroll"><table>
+<thead><tr><th>#</th><th>Claim</th><th>Source</th></tr></thead>
+<tbody>
+<tr><td>1.1</td><td>EPANET is a program of the US Environmental Protection Agency</td><td><a href="https://www.epa.gov/water-research/epanet">epa.gov/water-research/epanet</a>; <a href="https://en.wikipedia.org/wiki/EPANET">Wikipedia: EPANET</a></td></tr>
+<tr><td>1.2</td><td>This site is not EPA's, and the software is not EPANET, not a version of it, and not an official successor</td><td>True by construction. Nothing here is EPA's, and the software is a separate GPL v3 program that embeds EPANET's engine</td></tr>
+<tr><td>1.3</td><td>EPA has not reviewed, endorsed, approved, sponsored, or been asked</td><td><code>EC/dev/positioning.md</code> §6 records a courtesy note to Open Water Analytics as <i>not yet sent</i>; no EPA contact is recorded anywhere in the repository. Confirmed before the site was published.</td></tr>
+<tr><td>1.4</td><td>EPANET is obtained from EPA at epa.gov/water-research/epanet</td><td>The agency's own page</td></tr>
+</tbody></table></div>
+</div>
+<div class="item">
+<h3>2. Honesty item 1, the dependency claims (index.html)</h3>
+<div class="table-scroll"><table>
+<thead><tr><th>#</th><th>Claim</th><th>Source</th></tr></thead>
+<tbody>
+<tr><td>2.1</td><td>A 679 KB browser build of OWA-EPANET 2.3.5 is vendored and loaded on demand</td><td><code>EC/js/vendor/epanet-js.js</code> is 678,695 bytes on disk. <code>EC/js/vendor/README.md</code>: the engine inside the wrapper is OWA-EPANET 2.3.5. <code>EC/CLAUDE.md</code> records the engine as lazily imported</td></tr>
+<tr><td>2.2</td><td>OWA-EPANET 2.3.5 was released 2025-02-20</td><td><a href="https://github.com/OpenWaterAnalytics/EPANET/releases">OpenWaterAnalytics/EPANET releases</a>, v2.3.5 dated February 20, 2025. Agrees with <code>EC/js/vendor/README.md</code></td></tr>
+<tr><td>2.3</td><td>Extended period simulation, water age, source trace, chemical decay, pump energy, rule-based controls, and PRV/PSV/FCV all run through the EPANET engine only</td><td><code>EC/CLAUDE.md</code> <code>lpn_</code> section: EPS shipped "through the EPANET engine only"; "the built-in solver has no time dimension and is not getting one"; "PRV/PSV/FCV switch their own state inside the iteration and solve through EPANET only". Water quality and pump energy are run-based, so they inherit the same constraint (<code>EC/dev/roadmap-closed-ids.md</code>, tasks 566 and 566.01). Rules: task 248.03, <code>EC/js/lpn-rules.js</code></td></tr>
+<tr><td>2.4</td><td>Our own solver does one instant, pressures and flows only</td><td><code>EC/CLAUDE.md</code>: "with EPANET unreachable the page solves one instant and says so"</td></tr>
+<tr><td>2.5</td><td>We read and write EPANET's own <code>.inp</code>, <code>[TITLE]</code> to <code>[END]</code></td><td><code>EC/js/lpn-inp.js</code> names 26 section headings including <code>[TITLE]</code> and <code>[END]</code>. Export shipped 2026-08-18 (<code>EC/CLAUDE.md</code>)</td></tr>
+<tr><td>2.5a</td><td><b>We also have a native JSON format</b>, holding things an <code>.inp</code> cannot: scenarios, saved profile paths, a background image, map tiles and the stored view, a Text label anchored to a link or carrying more than one line, and longitude/latitude for a geographic project</td><td><code>EC/js/looped-network.js</code> <code>serializeProject()</code> writes <code>scenarios</code>, <code>profiles</code>, <code>backdrop</code>, <code>view</code>, <code>labelSettings</code>, <code>project.basemap</code>, <code>origin</code>; a shipped example lists exactly those keys. <b>Corrected 2026-09-06</b> after Tom pointed out that "we never invented one" was false.</td></tr>
+<tr><td>2.5b</td><td>Five <code>.inp</code> round trips are genuinely impossible and are reported rather than faked</td><td><code>EC/dev/roadmap-closed-ids.md</code> Task 281: a pump with no curve, a multi-line Text label, curve-point text, an emitter coefficient, a backdrop image's file name</td></tr>
+<tr><td>2.6</td><td>2,425 head comparisons across 25 reporting steps, agreeing to 0.005 ft, against EPA's own Net3 report</td><td><code>EC/CLAUDE.md</code>: "checked against all 25 steps of EPA's own <code>Net3.rpt</code> to 0.005 ft over 2,425 head comparisons (<code>EC/dev/lpn-spike/eps-net3-harness.js</code>)"</td></tr>
+<tr><td>2.7</td><td>Water quality anchored on the same report, worst 0.105%</td><td><code>EC/dev/roadmap-closed-ids.md</code>, task 566: "anchored on EPA's own Net3.rpt, 2,425 comparisons, worst 0.105%"</td></tr>
+<tr><td>2.8</td><td>Pump energy anchored on that report's own energy table</td><td><code>EC/dev/roadmap-closed-ids.md</code>, task 566.01</td></tr>
+<tr><td>2.9</td><td>Our Hazen-Williams pair is derived from EPANET's 4.727 form, and differs from the common metric restatement by up to 0.12% from 50 mm to 2 m</td><td><code>EC/js/PipeHydraulics.lib.js</code> header comment, verbatim</td></tr>
+<tr><td>2.10</td><td>Element vocabulary, curve types, rule grammar, and unit-switch behaviour follow EPANET</td><td><code>EC/CLAUDE.md</code>: element types list; "EPANET HAS EXACTLY FOUR KINDS"; <code>EC/js/lpn-rules.js</code> is "EPANET's own grammar"; "EPANET behaves the same way we do" on unit switching</td></tr>
+<tr><td>2.11</td><td>Curve editor modelled on EPANET's; table of assets is the view EPANET has had since 2.0; EPANET 2.2's five map colours are in the palette unsoftened</td><td><code>EC</code> commit <code>7b146c1d</code> "Curve editor reads like EPANET's"; <code>EC/js/looped-network.js</code> comment on the tables pane, "EPANET has had it since 2.0"; <code>EC/js/lpn-ramps.js</code>: "The five map colours of EPANET 2.2 ... Kept unsoftened"</td></tr>
+<tr><td>2.11a</td><td><b>They are NOT the default.</b> The shipped default is Viridis, for both nodes and links</td><td><code>EC/js/looped-network.js</code> <code>defaultSettings()</code>: <code>colorRampNode: 'viridis', colorRampLink: 'viridis'</code>. <b>Corrected 2026-09-06</b> after Tom challenged the original claim; the earlier wording was false, and a comment in <code>EC/js/looped-network.js</code> had said the same false thing, which is where it came from. <code>epanet</code> is only the fallback for an unknown ramp key.</td></tr>
+<tr><td>2.11b</td><td>Viridis is perceptually uniform and readable to colour-blind viewers; the rest of the palette is Brewer's</td><td><code>EC/js/lpn-ramps.js</code>: 41 Brewer ramps plus viridis/magma/inferno/plasma (CC0, BIDS) plus EPANET's rainbow plus Gray</td></tr>
+<tr><td>2.11c</td><td><b>The features named as not simply downstream</b>: scenarios, a world map, find and replace, flexible multi-labels, and a menu system we HOPE is easier</td><td><code>EC/CLAUDE.md</code>: scenarios are guarded by <code>scenario_seam_check.php</code> and <code>setProp()</code>; the world map is <code>project.basemap</code> with OSM and Mapbox raster tiles (task 497, <code>EC/js/lpn-terrain.js</code>); Find and replace is named in the <code>lpn_</code> section (task 542); multi-line and link-anchored Text labels are claim 2.5b's own impossible round trip. <b>Corrected 2026-09-06</b>: the earlier wording named <i>a profile tool</i> and <i>a search</i> as places we are not downstream. Tom struck it, saying <i>"EPANET has not only a profile tool, but graphs of time series, contours, frequency, and system flow"</i>, and he supplied this list himself. The menu-system claim is deliberately written as a hope, not a fact, because nobody has measured it.</td></tr>
+</tbody></table></div>
+</div>
+<div class="item">
+<h3>3. Honesty items 2 to 5 (index.html)</h3>
+<div class="table-scroll"><table>
+<thead><tr><th>#</th><th>Claim</th><th>Source</th></tr></thead>
+<tbody>
+<tr><td>3.1</td><td>The licence paragraph, quoted</td><td>Tom Haws, verbatim, 2026-09-06, supplied in the brief for this site</td></tr>
+<tr><td>3.2</td><td>The software is GNU GPL v3 or later</td><td><code>EC/CLAUDE.md</code> licence line; <code>EC/dev/positioning.md</code> §2</td></tr>
+<tr><td>3.3</td><td>EPANET carries no licence because a US government work has no copyright to license</td><td>17 U.S.C. § 105; see 4.2</td></tr>
+<tr><td>3.4</td><td>"We are what we are ... we have no idea what we are not and what we don't know"</td><td>Tom Haws, 2026-08-22, quoted in <code>EC/dev/positioning.md</code> §2, which records it as written <i>for</i> the LibreWaterNet splash page and therefore sanctioned for public use</td></tr>
+<tr><td>3.5</td><td>We do not publish a completeness claim against EPANET</td><td><code>EC/dev/positioning.md</code> §2: "never write a completeness claim against EPANET"; <code>~/webdev/librewaternet.org/CLAUDE.md</code> restates it</td></tr>
+<tr><td>3.6</td><td>The AI paragraph, quoted</td><td>Tom Haws, verbatim, 2026-09-06, supplied in the brief for this site</td></tr>
+<tr><td>3.7</td><td>No foundation, no governance document, no funding</td><td><code>EC/dev/positioning.md</code> §1 and §8. <b>"No board" was removed 2026-09-06</b>: Tom names a board member, Mary Cabais, P.E., in the Philippines.</td></tr>
+<tr><td>3.8</td><td>27 languages</td><td><code>EC/lib/lang.ec.*.php</code> is 27 files. Stated as 27 on librewaternet.org</td></tr>
+</tbody></table></div>
+</div>
+<div class="item">
+<h3>4. Gratitude (index.html)</h3>
+<div class="table-scroll"><table>
+<thead><tr><th>#</th><th>Claim</th><th>Source</th></tr></thead>
+<tbody>
+<tr><td>4.1</td><td>EPANET was paid for by American taxpayers and given away</td><td>Follows from 4.2 and from EPANET being EPA work. Stated as a characterisation, not a budget figure</td></tr>
+<tr><td>4.2</td><td>17 U.S.C. § 105: copyright is not available for any work of the United States government; a "work of the United States Government" is one prepared by an officer or employee as part of official duties (§ 101)</td><td><a href="https://uscode.house.gov/view.xhtml?req=%28title%3A17+section%3A105+edition%3Aprelim%29">uscode.house.gov, title 17 § 105</a>; <a href="https://en.wikipedia.org/wiki/Copyright_status_of_works_by_the_federal_government_of_the_United_States">Copyright status of works by the federal government</a></td></tr>
+<tr><td>4.3</td><td>EPANET was created by Lewis A. Rossman for EPA and first appeared in 1993</td><td><a href="https://en.wikipedia.org/wiki/EPANET">Wikipedia: EPANET</a>; <a href="https://www.epa.gov/sciencematters/epanet-220-epa-and-water-community-collaboration">EPA Science Matters, EPANET 2.2.0</a></td></tr>
+<tr><td>4.4</td><td>A formal report on the EPANET water quality model was published in 1993</td><td><a href="https://www.osti.gov/biblio/5795398">OSTI record, EPANET water quality model</a>; <a href="https://cfpub.epa.gov/si/si_public_record_Report.cfm?Lab=NRMRL&amp;dirEntryID=44860">EPA Science Inventory</a></td></tr>
+<tr><td>4.5</td><td>2.2 was the last release made by EPA itself</td><td><a href="https://github.com/USEPA/EPANET2.2">USEPA/EPANET2.2 on GitHub</a>; <code>EC/js/vendor/README.md</code>: "EPANET development moved to Open Water Analytics ... after EPA's 2.2.0". <b>No date for 2.2 is stated on the site</b>, see section 6</td></tr>
+<tr><td>4.6</td><td>EPANET is used by utilities, consultants, regulators, and academics worldwide, and its engine is embedded in many other packages</td><td><a href="https://en.wikipedia.org/wiki/EPANET">Wikipedia: EPANET</a>; <a href="https://www.epa.gov/sciencematters/epanet-220-epa-and-water-community-collaboration">EPA Science Matters</a></td></tr>
+<tr><td>4.7</td><td>Open Water Analytics is a community effort in collaboration with EPA; 2.3 released 2024-07-17, 2.3.5 on 2025-02-20</td><td><a href="https://github.com/OpenWaterAnalytics/EPANET/releases">OpenWaterAnalytics/EPANET releases</a>; <code>EC/js/vendor/README.md</code></td></tr>
+<tr><td>4.8</td><td>The browser build of the engine is MIT, © Luke Butler, wrapping MIT OWA-EPANET, compiled to WebAssembly</td><td><code>EC/js/vendor/README.md</code>; <code>EC/js/vendor/epanet-js.LICENSE</code>. <b>The package's own name is deliberately not printed on the site</b>, see section 7</td></tr>
+<tr><td>4.9</td><td>Bootstrap 5.3.2, MIT, © 2011-2023 The Bootstrap Authors</td><td><code>EC/js/vendor/README.md</code>; the licence header inside the vendored files</td></tr>
+<tr><td>4.10</td><td>Colour schemes, Apache-2.0, © 2002 Cynthia Brewer, Mark Harrower, and The Pennsylvania State University</td><td><code>EC/js/lpn-ramps.js</code> licence block; <a href="https://colorbrewer2.org/export/LICENSE.txt">colorbrewer2.org/export/LICENSE.txt</a></td></tr>
+<tr><td>4.11</td><td>viridis, magma, inferno, plasma released CC0 by Nathaniel J. Smith, Stefan van der Walt, and (viridis) Eric Firing</td><td><code>EC/js/lpn-ramps.js</code>; <a href="https://github.com/BIDS/colormap">github.com/BIDS/colormap</a></td></tr>
+<tr><td>4.12</td><td>OpenStreetMap supplies the street basemap and Nominatim answers place-name search; Mapbox supplies satellite imagery and terrain elevation</td><td><code>EC/CLAUDE.md</code>: the four third-party requests, each opt-in</td></tr>
+<tr><td>4.13</td><td>The third-party <b>code</b> is vendored; a copy travels with the software rather than being fetched while you work. The two <b>services</b> in 4.12 are not code and are fetched over the network, each behind its own consent gate</td><td><code>EC/js/vendor/README.md</code>: "Everything this site loads comes from this site. There is no CDN, no hosted font, and no third-party code of any kind." Map tiles are the stated data exception, and the site says the tiles come from those services  <b>Corrected 2026-09-06</b>: the page previously said \"all of them are vendored\" over a list that included OpenStreetMap, Nominatim, and Mapbox, which was false. The list is now split, and the services carry their own paragraph saying they are off until turned on.</td></tr>
+<tr><td>4.14</td><td>ColorBrewer published 2002 by Brewer, Harrower, and Penn State, funded by the NSF Digital Government program through the GeoVISTA Center</td><td><a href="https://en.wikipedia.org/wiki/ColorBrewer">Wikipedia: ColorBrewer</a>; <a href="https://www.personal.psu.edu/cab38/ColorBrewer/ColorBrewer_learnMore.html">ColorBrewer: Learn More, Penn State</a></td></tr>
+<tr><td>4.15</td><td>The schemes are designed per class count and tested for photocopying, projection, and colour-blind readers</td><td><code>EC/js/lpn-ramps.js</code>: "Brewer PUBLISHES a separate, individually designed set for each class count"; <a href="https://www.personal.psu.edu/cab38/ColorBrewer/ColorBrewer_learnMore.html">ColorBrewer: Learn More</a> on display environments and colourblind-safe options</td></tr>
+<tr><td>4.16</td><td>Cynthia Brewer received the ICA Carl Mannerfelt Gold Medal in 2023</td><td><a href="https://en.wikipedia.org/wiki/Cynthia_Brewer">Wikipedia: Cynthia Brewer</a>; <a href="https://www.geog.psu.edu/directory/cynthia-brewer">Penn State Geography directory</a></td></tr>
+<tr><td>4.17</td><td>The acknowledgement sentence is fixed by Apache-2.0 clause 2, and clauses 4 and 5 forbid using the name to endorse or promote</td><td><code>EC/js/lpn-ramps.js</code> licence block, which quotes clause 2 verbatim; <a href="https://colorbrewer2.org/export/LICENSE.txt">the licence text</a></td></tr>
+<tr><td>4.18</td><td>The FSF released GPL version 3 on 2007-06-29</td><td><a href="https://www.fsf.org/news/gplv3_launched">fsf.org/news/gplv3_launched</a>; the licence's own header, "Version 3, 29 June 2007"</td></tr>
+<tr><td>4.19</td><td>Net1, Net2, and Net3 are the example networks an EPANET-compatible program is checked against</td><td><code>EC/CLAUDE.md</code>: <code>.inp</code> export "returns 1,280 numeric tokens across Net1/2/3 character-for-character"; EPA ships them with EPANET</td></tr>
+</tbody></table></div>
+</div>
+<div class="item">
+<h3>5. epanet.html</h3>
+<div class="table-scroll"><table>
+<thead><tr><th>#</th><th>Claim</th><th>Source</th></tr></thead>
+<tbody>
+<tr><td>5.1</td><td>EPANET performs extended-period simulation of hydraulic and water-quality behaviour in pressurised pipe networks</td><td><a href="https://en.wikipedia.org/wiki/EPANET">Wikipedia: EPANET</a>, quoting the program's own description</td></tr>
+<tr><td>5.2</td><td>The four consequences of public domain (no licence, no owner, anyone may take it private, cannot be withdrawn)</td><td>Follows from 4.2. The "anyone may take it private" point is standard public-domain doctrine and is also what makes EPANET's engine embeddable in commercial products (4.6)</td></tr>
+<tr><td>5.3</td><td>A run report from our page prints a version higher than the one on EPA's download page</td><td><code>EC/js/vendor/README.md</code>: "The run report prints it as <code>2.3.05</code> ... beside EPA's own download page, which still offers 2.2.0"</td></tr>
+<tr><td>5.4</td><td>Open development continues at github.com/OpenWaterAnalytics/EPANET</td><td>The repository itself</td></tr>
+</tbody></table></div>
+</div>
+<div class="item">
+<h3>6. Stated on the site as unverified</h3>
+<ul class="facts"><li><b>The release date of EPANET 2.2.</b> <a href="https://en.wikipedia.org/wiki/EPANET">Wikipedia</a> gives July 23, 2020. <code>EC/js/vendor/README.md</code> records "EPA's 2.2.0 of December 2019". We did not resolve which is right, so <b>no 2.2 date appears anywhere on the site</b>, and <code>epanet.html</code> says the sources disagree.</li><li><b>The exact administrative name of the EPA division.</b> Sources give "Water Supply and Water Resources Division" (Wikipedia) and "Drinking Water Research Division" (the 1993 report abstract). The site says only "EPA's water research programme" and states that it did not verify the division name.</li></ul>
+</div>
+<div class="item">
+<h3>7. Constraints observed, and what they cost</h3>
+<ul class="facts"><li><b>Cynthia Brewer.</b> The Apache-2.0 licence on her schemes (see 4.17) fixes the wording of the acknowledgement and forbids using the project name to endorse or promote. The site therefore reproduces the required sentence verbatim, in English, untranslated, in its own box, and puts the name in no heading and in no product or control name. The one prose mention names the source of the colours, which is attribution and not promotion.</li><li><b>No live commercial trademark.</b> <code>EC/dev/positioning.md</code> §1 and ROADMAP task 296 ban naming competing products. The site therefore credits the browser build of the EPANET engine by licence, author, and function, but does not print the package's name. <b>This is a real cost to a gratitude page:</b> thanking a piece of software without saying its name is thin thanks, and the package in question is a library, not a competing product, even though a differently-named web application by other people is easily confused with it.</li><li><b>No claim about phones, no comparison, no feature table, no completeness claim.</b> All from <code>EC/dev/positioning.md</code> and <code>~/webdev/librewaternet.org/CLAUDE.md</code>.</li></ul>
+</div>
+<div class="item">
+<h3>8. Claims deliberately not made</h3>
+<ul class="facts"><li>Any number for how many people use the software.</li><li>Any statement about what EPA thinks of this, or would think of it.</li><li>Any date, roadmap, or promise about future features.</li><li>Any statement that the software is as capable as EPANET, in any respect other than the specific measured agreements in rows 2.6 to 2.8.</li></ul>
+</div>
+<div class="item">
+<h3>9. The doors, the footers, and the claims page</h3>
+<p>Added 2026-09-06, after a review found these assertions on the page with no row of their own.</p>
+<div class="table-scroll"><table>
+<thead><tr><th>#</th><th>Claim</th><th>Source</th></tr></thead>
+<tbody>
+<tr><td>9.1</td><td>The network editor draws a looped network on a map, solves it, and saves or exports an EPANET file</td><td><code>EC/js/looped-network.js</code> File menu: New, Open, Save, Import <code>.inp</code>, Import geo, <code>lpn_file_export_inp</code>. <b>Corrected 2026-09-06</b>: the page said "publish the drawing", and there is no publish, share, or image export</td></tr>
+<tr><td>9.2</td><td>Free, no sign-up, runs in your browser, in 27 languages</td><td><code>EC/CLAUDE.md</code>: no database, no authentication, all computation client-side; <code>EC/lib/lang.ec.*.php</code> is 27 files</td></tr>
+<tr><td>9.3</td><td>The project is looking for advisors, bug reports, power users with wish lists, and non-profit directors, not for money</td><td><code>EC/dev/positioning.md</code> §1, Tom's own four phrases, used in his order</td></tr>
+<tr><td>9.4</td><td>It is a web page rather than a Windows program</td><td>EPA distributes EPANET as a Windows program from its own page; this suite runs in a browser (<code>EC/CLAUDE.md</code>). Not a claim that EPANET is Windows-only, and the site does not make one</td></tr>
+<tr><td>9.5</td><td>Neither page makes any request to another server: no fonts, no scripts, no images, no analytics, no cookies, no storage</td><td>Verified 2026-09-06 by reading both pages and the stylesheet: no <code>&lt;img&gt;</code>, no <code>&lt;script&gt;</code>, no <code>url()</code>, no <code>@import</code>, and no webfont link. This is the claim a sceptical reader tests first, so it is checked on every change</td></tr>
+<tr><td>9.6</td><td>EPANET runs an instant or a week</td><td>Follows from 5.1: extended-period simulation with a user-set duration</td></tr>
+<tr><td>9.7</td><td>This page exists because the site says every claim is checkable</td><td>The site said so before this page existed, which was the defect that produced it</td></tr>
+</tbody></table></div>
+</div>
+</section>
+
+</main>
+
+<footer>
+	<p><b>Not EPANET.</b> This site is not affiliated with, endorsed by, or sponsored by the
+	United States Environmental Protection Agency. EPANET is a public-domain program of the
+	US EPA.</p>
+	<p>This page makes no request to any other server: no fonts, no scripts, no images from
+	elsewhere, no analytics, no cookies, and no storage on your device. The only outbound
+	links are the ones you can see, and they only go anywhere when you click them.</p>
+	<p><a href="index.html">Back to the front page</a> &middot;
+	<a href="epanet.html">About EPANET</a> &middot;
+	<a href="https://librewaternet.org">LibreWaterNet.org</a></p>
+</footer>
+
+</div>
+</body>
+</html>

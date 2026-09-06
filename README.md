@@ -1,6 +1,6 @@
 # not-epanet.org
 
-A two-page static gateway site. Its job is to send a visitor to
+A three-page static gateway site. Its job is to send a visitor to
 [LibreWaterNet.org](https://librewaternet.org) and to the looped network editor at
 `hawsedc.com/engcalcs/Looped-Network.php`, and, on the way, to say plainly what the software
 is not.
@@ -15,9 +15,11 @@ model/example/demonstration/leadership of deep honesty and deep gratitude."*
 | `index.html` | The disclaimer, the two doors, the honesty section, and the gratitude section |
 | `epanet.html` | What EPANET is, who made it, what public domain means, and where to get it |
 | `style.css` | The whole stylesheet. No other assets exist |
-| `CLAIMS.md` | Every factual assertion on the site, one per row, with its source |
+| `claims.html` | The ledger as a page. **Generated. Do not edit by hand** |
+| `CLAIMS.md` | Every factual assertion on the site, one per row, with its source. The source of truth for `claims.html` |
+| `build_claims.py` | Renders `CLAIMS.md` to `claims.html`. `--check` fails if the page is stale |
 
-## Why two pages and not four
+## Why three pages and not four
 
 The obvious split was `index` + `gratitude` + `honesty` + `epanet`. It was rejected for the
 honesty half and taken for the EPANET half, for one reason each.
@@ -31,6 +33,11 @@ honesty half and taken for the EPANET half, for one reason each.
   the one part a reader might reasonably want to send to a colleague on its own, and keeping it
   separate stops the front page turning into a page mostly about EPA. The disclaimer is repeated
   at the top of it, because a page reached directly from a search must carry its own denial.
+- **The claims ledger is published** (added 2026-09-06). The front page tells the reader that
+  every claim on it is checkable, and before this page existed there was nowhere to check:
+  `CLAIMS.md` was written but unpublished, and neither page linked a repository. A promise of
+  verifiability with nothing behind it is the one kind of dishonesty this site cannot afford.
+  It is generated from `CLAIMS.md`, so the published ledger cannot drift from the working one.
 
 ## What the site claims
 
@@ -38,7 +45,10 @@ Everything is in `CLAIMS.md`, row by row, with a source for each. In summary:
 
 - It is **not** EPANET, **not** a version of EPANET, **not** an official successor, and **not**
   affiliated with, endorsed by, reviewed by, or sponsored by the US EPA or the US government.
-  This is the first block on both pages, above everything else.
+  This is the first block of substance on every page, before the doors and before both
+  sections; only the wordmark, the heading and the one-line lede come before it. **Corrected
+  2026-09-06**: this used to say "above everything else", which was false, and the same false
+  claim had been written into the page itself.
 - The project it points to is **deeply dependent on EPANET**, in seven specific and checkable
   ways: the vendored engine, the analyses that only run through it, the file format, the
   verification anchors, the Hazen-Williams constants, the element vocabulary, and the interface.
