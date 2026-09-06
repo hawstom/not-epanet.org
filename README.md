@@ -1,4 +1,4 @@
-# notepanet.org
+# not-epanet.org
 
 A two-page static gateway site. Its job is to send a visitor to
 [LibreWaterNet.org](https://librewaternet.org) and to the looped network editor at
@@ -59,10 +59,16 @@ Everything is in `CLAIMS.md`, row by row, with a source for each. In summary:
   says the software does everything EPANET does, and never criticises EPANET's interface.
 - **No date for EPANET 2.2.** Two public sources disagree; `epanet.html` says so out loud rather
   than picking one.
-- **No canonical host, and no absolute link to this site's own pages.** Tom has registered
-  `note-epanet.org`, `notepanet.org`, `NotEPANET.org`, and `Not-EPANET.org`, and has named
-  different pairs of those on different days. Every internal link is relative, so the site works
-  from any of them, and from `file://`.
+- **No canonical host, and no absolute link to this site's own pages.** Every internal link is
+  relative, so the site works from any name it is served under, and from `file://`.
+  **`not-epanet.org` is the canonical one**, decided by Tom on 2026-09-06 after seeing the
+  unhyphenated form: *"When I saw that notepanet.org had the word 'note' in it prominently, I felt
+  that I had made a mistake, and so I registered not-epanet.org as a correction."* He is right, and
+  the general advice against hyphenated domains does not reach this case: that advice is about
+  domains whose unhyphenated form reads correctly, and `notepanet` does not read as "not EPANET" to
+  anybody. Setting the word boundary with a hyphen is the standard remedy for exactly this, and
+  camel case (`NotEPANET.org`) cannot help because host names are case-insensitive and are shown
+  lowercased. The other five are held defensively and should redirect here.
 - **No external request of any kind.** No web fonts (the sibling site uses Google Fonts; this one
   cannot, and uses system stacks instead), no CDN, no scripts, no images, no analytics, no
   cookies, no `localStorage`. A page about honesty that phoned home would be the first thing a
