@@ -136,6 +136,15 @@ a:hover, a:focus-visible { color: var(--pencil); }
 	color: var(--ink); text-decoration: none;
 }
 .wordmark .not { color: var(--pencil); }
+
+/* **TWO WORDMARKS, ONE UPPER-LEFT.** The sister site's name sits beside our own, quieter
+   than it but built from the same parts, so the pair reads as two doors rather than as a
+   brand and an advertisement. It wraps before the nav does, because on a narrow screen the
+   thing a reader needs first is still "where am I". */
+.marks { display: flex; align-items: baseline; gap: 1rem; flex-wrap: wrap; }
+.marks .sister { font-weight: 700; color: var(--ink-2); }
+.marks .sister .libre { color: var(--water); }
+.marks .sister:hover, .marks .sister:focus-visible { color: var(--ink); }
 .topbar nav { display: flex; gap: 1.4rem; flex-wrap: wrap; }
 .topbar nav a { color: var(--ink-2); text-decoration: none; font-family: var(--sans); font-size: .92rem; }
 .topbar nav a:hover, .topbar nav a:focus-visible { color: var(--water); }
