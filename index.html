@@ -43,9 +43,18 @@
 		this. Nobody here has any affiliation with the EPA or with the United States government.
 		We have not been in touch with them. If you came looking for EPANET itself, get it from
 		the agency that made it: <a href="https://www.epa.gov/water-research/epanet">epa.gov/water-research/epanet</a>.</p>
-		<p>We use EPANET's name here for one reason only, which is to tell you plainly what we
-		are not. Everything on this page after this box is either a statement of how much we owe
-		EPANET, or a statement of where we fall short of it.</p>
+		<p>We use EPANET's name here for three reasons, and we would rather list all three than
+		have you work the third one out for yourself:</p>
+		<ol class="reasons">
+			<li><b>To connect with EPANET users.</b> They are who this is for. If you model water
+			networks, you almost certainly know EPANET, and this is the fastest true thing we can
+			say about where we stand.</li>
+			<li><b>To give credit.</b> The page after this box is mostly a list of what we owe
+			EPANET and the people who gave it away.</li>
+			<li><b>To be found.</b> Naming EPANET puts this page in front of people searching for
+			it. That is a real motive and we are not going to pretend it is not.</li>
+		</ol>
+		<p>And then, throughout, to tell you plainly what we are not.</p>
 	</div>
 
 	<div class="doors">
@@ -78,24 +87,32 @@
 
 	<div class="item">
 		<h3>1. We are deeply dependent on EPANET</h3>
-		<p>Not inspired by it. Not compatible with it. Dependent on it. The specifics, each one
-		checkable in the source:</p>
+		<p>Not just inspired by it. Not just compatible with it. Dependent on it. The specifics,
+		each one checkable in the source:</p>
 		<ul class="facts">
 			<li><b>The engine is EPANET's, and it ships inside the page.</b> A 679 KB browser
 			build of OWA-EPANET 2.3.5, released 2025-02-20, is vendored in the repository and
 			loaded on demand. We did not write a solver engine to compete with it. We wrote a
 			drawing surface and put EPANET underneath it.</li>
-			<li><b>Most of the answers only exist because it is there.</b> Simulation over time,
-			water age, source trace, chemical decay, pump energy, rule-based controls, and
-			pressure-reducing, pressure-sustaining, and flow-control valves all run through the
-			EPANET engine and through nothing else. Our own solver does one instant, pressures and
-			flows only. It has no time dimension and is not getting one.</li>
-			<li><b>The file format is EPANET's.</b> We read and write EPANET's own
+			<li><b>Most of the answers only exist because it is there.</b> Extended period
+			simulation, water age, source trace, chemical decay, pump energy, rule-based controls,
+			and pressure-reducing, pressure-sustaining, and flow-control valves all run through the
+			EPANET engine and through nothing else. Our own solver does steady state (single
+			moment), pressures and flows only. It has no time dimension and is not currently
+			planned to get one.</li>
+			<li><b>The interchange format is EPANET's.</b> We read and write EPANET's own
 			<code>.inp</code> file, section heading by section heading, from <code>[TITLE]</code>
-			to <code>[END]</code>. There is no format of our own for anyone to be locked into,
-			because we never invented one.</li>
-			<li><b>We check ourselves against EPA's own published answers.</b> Our run over time
-			is compared against EPA's own report for its Net3 example network: 2,425 head
+			to <code>[END]</code>, and a value you did not edit comes back out character for
+			character.
+			<span class="qualify">We do have a native format, and it would be dishonest to say
+			otherwise: a project saves as JSON, because there are things an <code>.inp</code>
+			cannot hold. Scenarios. Saved profile paths. A background image. Map tiles and the
+			view you were looking at. A Text label anchored to a pipe, or one with more than one
+			line in it. Longitude and latitude for a project drawn on the world. Everything an
+			<code>.inp</code> can carry still round-trips through one, and the five things it
+			genuinely cannot are reported to you rather than silently dropped.</span></li>
+			<li><b>We check ourselves against EPA's own published answers.</b> Our extended period
+			simulation is compared against EPA's own report for its Net3 example network: 2,425 head
 			comparisons across 25 reporting steps, agreeing to 0.005 ft. Water quality is
 			anchored on the same report, worst difference 0.105%. Pump energy is anchored on that
 			report's own energy table. EPANET is not our benchmark by preference. It is the truth
@@ -106,12 +123,18 @@
 			will check us against. The two disagree by up to 0.12% across pipe sizes from 50 mm
 			to 2 m, and we chose to agree with EPANET.</li>
 			<li><b>The vocabulary is EPANET's.</b> Junction, reservoir, tank, pipe, pump, valve.
-			The four curve types. The grammar of a rule. What happens when you change a unit.
-			An engineer who knows EPANET should not have to learn a second dialect from us.</li>
-			<li><b>The interface follows EPANET's.</b> EPANET's own user interface is the model
-			our editor works from: its curve editor, its table of assets, its five map colours
-			kept unsoftened as our default colour scheme. Where we differ from it, that is
-			usually us being new, not us knowing better.</li>
+			Extended period simulation, not a phrase of our own invention for it. Trials and
+			iterations, static pressure, drawdown, converge. The four curve types. The grammar of
+			a rule. What happens when you change a unit. An engineer who knows EPANET should not
+			have to learn a second dialect from us, and we have a check that fails the build when
+			we start writing one.</li>
+			<li><b>The interface is inspired by and informed by EPANET's.</b> Its curve editor
+			and its table of assets are where ours came from, and its own five map colours are in
+			our palette unsoftened, so a reader who knows an EPANET pressure map can have that one
+			back. This is the one place on this page where we are not simply downstream: the
+			editor is a full-window drawing surface with scenarios, a search, a profile tool and a
+			map behind it, and it is a web page rather than a Windows program. Some of that is
+			better and some of it is just different.</li>
 		</ul>
 		<p>None of that is a complaint and none of it is modesty. It is the actual dependency
 		graph. If EPANET had not existed, or had not been given away, this project would not
@@ -167,8 +190,8 @@
 	<div class="item">
 		<h3>5. We are not affiliated with anyone</h3>
 		<p>No EPA affiliation, no government affiliation, no university affiliation, no sponsor,
-		no foundation, no board, and no funding. Nobody has vetted this software on your behalf.
-		Every claim on this page is one you can check yourself, and every source is named on the
+		no foundation, and no funding. Nobody has vetted this software on your behalf. Every
+		claim on this page is one you can check yourself, and every source is named on the
 		<a href="epanet.html">About EPANET</a> page or in the project's own repository. Where we
 		were not sure of a fact, we left it out.</p>
 	</div>
@@ -269,10 +292,13 @@
 		<h3>EPANET's own interface</h3>
 		<p>It is customary in this field to describe EPANET's user interface as dated. We decline
 		to. It is the interface that taught most working modellers what a network model is, and
-		our editor follows it deliberately: the curve editor is modelled on EPANET's, the table
-		of assets is the view EPANET has had since version 2.0, and the default colour scheme is
-		EPANET 2.2's own five map colours, kept unsoftened because matching what a user already
-		reads is worth more than a prettier ramp.</p>
+		our editor is informed by it deliberately: the curve editor is modelled on EPANET's, and
+		the table of assets is the view EPANET has had since version 2.0. EPANET 2.2's own five
+		map colours are in our palette unsoftened, so that a reader who knows an EPANET pressure
+		map can have exactly that one back.
+		<span class="qualify">They are not our default, and it would be easy to imply otherwise:
+		the shipped default is Viridis, chosen because it is perceptually uniform and readable to
+		colour-blind viewers. The rest of the palette is Cynthia Brewer's.</span></p>
 	</div>
 
 	<div class="item">

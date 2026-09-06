@@ -90,3 +90,32 @@ Everything is in `CLAIMS.md`, row by row, with a source for each. In summary:
 ## Not done
 
 Not registered, not deployed, not pushed anywhere. One local git repository, no remote.
+
+## Corrections from Tom's first reading, 2026-09-06
+
+He read the draft and found four claims that were too flattering or simply false. Recorded because
+the site's own subject makes getting these wrong worse than getting them wrong anywhere else.
+
+- **The colour claim was FALSE.** The draft said EPANET 2.2's five map colours are our default
+  scheme. The shipped default is Viridis. Tom caught it (*"Isn't this patently false? What about
+  Cynthia Brewer?"*), and the source of the error was a comment in the suite's own
+  `js/looped-network.js` that said the same false thing; that comment is corrected too. EPANET's
+  ramp is in the palette, unsoftened, and is the fallback for an unknown key. It is not the default.
+- **The file-format claim was FALSE.** *"There is no format of our own for anyone to be locked into,
+  because we never invented one"* is not true: a project saves as JSON and holds scenarios, saved
+  profile paths, a background image, map tiles and the stored view, multi-line and link-anchored
+  Text, and geographic coordinates. Now stated, with the list.
+- **The interface claim was humble to the point of misleading.** *"Follows EPANET's"* is now
+  *"inspired by and informed by"*, in Tom's own words, and the bullet says where the editor is not
+  downstream at all.
+- **"No board" is gone.** Tom has a board member: Mary Cabais, P.E., in the Philippines.
+
+And two additions rather than corrections:
+
+- **The SEO motive is disclosed.** The draft said we use EPANET's name *"for one reason only"*.
+  Tom: *"Honesty requires that we disclose all three reasons... I don't want to hide the SEO motive
+  or pretend it isn't important."* Three numbered reasons now: to connect with EPANET users, to give
+  credit, and to be found.
+- **Extended period simulation is called that.** Not "a run over time", not "simulation over time".
+  Tom, having conceded the alternative reads better: *"But for an engineering software, let's do
+  what you said: Use the EPANET language."* The suite now has a build check enforcing it.
