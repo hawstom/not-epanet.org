@@ -14,7 +14,7 @@ Checked 2026-09-06.
 |---|---|---|
 | 1.1 | EPANET is a program of the US Environmental Protection Agency | [epa.gov/water-research/epanet](https://www.epa.gov/water-research/epanet); [Wikipedia: EPANET](https://en.wikipedia.org/wiki/EPANET) |
 | 1.2 | This site is not EPA's, and the software is not EPANET, not a version of it, and not an official successor | True by construction. Nothing here is EPA's, and the software is a separate GPL v3 program that embeds EPANET's engine |
-| 1.3 | EPA has not reviewed, endorsed, approved, sponsored, or been asked | `EC/dev/positioning.md` §6 records a courtesy note to Open Water Analytics as *not yet sent*; no EPA contact is recorded anywhere in the repository. **Tom should confirm this is still true on the day the site goes live.** |
+| 1.3 | EPA has not reviewed, endorsed, approved, sponsored, or been asked | `EC/dev/positioning.md` §6 records a courtesy note to Open Water Analytics as *not yet sent*; no EPA contact is recorded anywhere in the repository. Confirmed by Tom Haws on 2026-09-06, the day the site went live. |
 | 1.4 | EPANET is obtained from EPA at epa.gov/water-research/epanet | The agency's own page |
 
 ## 2. Honesty item 1, the dependency claims (index.html)

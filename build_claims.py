@@ -26,10 +26,9 @@ OUT = "claims.html"
 # a newline. Each is required to match exactly once, so a reworded source fails loudly
 # here rather than silently publishing an instruction meant for the maintainers.
 PUBLIC_REWRITES = [
-    # An open instruction to the maintainer would tell a reader the site went live
-    # without the check being done. The site asserts the fact; the ledger records it.
-    (r"\*\*Tom should confirm this is still true on the day the site goes\s+live\.\*\*",
-     "Confirmed before the site was published."),
+    # (The row 1.3 rewrite that stood here is gone: Tom confirmed the EPA had not been
+    # contacted on 2026-09-06, so CLAIMS.md now records the confirmation and there is
+    # no instruction left to hide.)
     # Second person, addressed to the maintainer, in a document a stranger is reading.
     (r"\*\*This is a real cost to\s+a gratitude page and Tom should rule on it:\*\*",
      "**This is a real cost to a gratitude page:**"),

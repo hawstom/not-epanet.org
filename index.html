@@ -118,7 +118,8 @@
 			from <code>[TITLE]</code> to <code>[END]</code>, and a value you did not edit comes back out character for
 			character.
 			<span class="qualify">We also have a native format of our own: a project
-			saves as JSON, because there are things an <code>.inp</code> cannot hold. Scenarios. Saved profile paths. A background image. Map tiles and the
+			saves as JSON, because there are things an <code>.inp</code> cannot hold. Scenarios. Saved profile paths. The background picture
+			itself, which an <code>.inp</code> can name but cannot contain. Map tiles and the
 			view you were looking at. A Text label anchored to a pipe, or one with more than one
 			line in it. Longitude and latitude for a project drawn on the world. Everything an
 			<code>.inp</code> can carry still round-trips through one, and the five things it
@@ -135,7 +136,7 @@
 			will check us against. The two disagree by up to 0.12% across pipe sizes from 50 mm
 			to 2 m, and we chose to agree with EPANET.</li>
 			<li><b>The vocabulary is EPANET's.</b> Junction, reservoir, tank, pipe, pump, valve.
-			Extended period simulation, not a phrase of our own invention for it. Trials and
+			Extended period simulation. Trials and
 			iterations, static pressure, drawdown, converge. The four curve types. The grammar of
 			a rule. What happens when you change a unit. An engineer who knows EPANET should not
 			have to learn a second dialect from us, and we have a check that fails the build when
