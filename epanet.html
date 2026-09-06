@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>About EPANET</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="What EPANET is, who made it, why it is in the public domain, and where to get it. Written by a project that depends on it and is not part of it.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="sheet-bg" aria-hidden="true"></div>
+
+<div class="sheet">
+
+<header class="topbar">
+	<a class="wordmark" href="./"><span class="not">Not</span> EPANET</a>
+	<nav>
+		<a href="index.html#honesty">Honesty</a>
+		<a href="index.html#gratitude">Gratitude</a>
+		<a href="epanet.html">About EPANET</a>
+		<a href="https://librewaternet.org">LibreWaterNet</a>
+	</nav>
+</header>
+
+<main>
+
+<div class="hero">
+	<span class="label">Somebody else's software</span>
+	<h1>What EPANET actually is<span class="rule-under"></span></h1>
+	<p class="lede">Written by people who use it every day and have no connection to the agency
+	that made it. If anything below is wrong, EPA's own page is the authority and this one
+	is not.</p>
+
+	<div class="disclaimer">
+		<span class="label">Once more, plainly</span>
+		<p>This page is about EPANET. It is not by EPANET, it is not by the EPA, and nothing on
+		it is approved by either. EPANET lives at
+		<a href="https://www.epa.gov/water-research/epanet">epa.gov/water-research/epanet</a>,
+		and its continuing open development is at
+		<a href="https://github.com/OpenWaterAnalytics/EPANET">github.com/OpenWaterAnalytics/EPANET</a>.</p>
+	</div>
+</div>
+
+<section>
+	<div class="sec-head">
+		<span class="label">The program</span>
+		<h2>A public-domain model of a pipe network</h2>
+	</div>
+
+	<div class="item">
+		<p>EPANET performs extended-period simulation of the hydraulic and water-quality
+		behaviour of pressurised pipe networks. You describe a system of junctions, reservoirs,
+		tanks, pipes, pumps, and valves; it computes the pressure at every junction, the flow in
+		every pipe, the level in every tank, and the fate of a chemical or of the water's own age
+		as it travels. It runs an instant or a week.</p>
+		<p>It was created by Lewis A. Rossman for the United States Environmental Protection
+		Agency's water research programme, and first appeared in 1993, with a formal report on
+		the EPANET water quality model published the same year. EPANET 2 followed. Version 2.2
+		was the last release made by EPA itself.</p>
+		<p>It is used by utilities, consulting engineers, regulators, and universities all over
+		the world, and its computational engine is embedded in a large number of other programs,
+		commercial and free, this one included. Describing it as the industry reference for
+		network hydraulics is not marketing language; it is simply where the field ended up.</p>
+	</div>
+
+	<div class="item">
+		<h3>Why it costs nothing, and what that means</h3>
+		<p>EPANET is not free because somebody decided to be generous with a price. It is free
+		because United States copyright law does not permit a work of the federal government to
+		be copyrighted at all.
+		<a href="https://uscode.house.gov/view.xhtml?req=%28title%3A17+section%3A105+edition%3Aprelim%29">17
+		U.S.C. &sect; 105</a> says copyright protection is not available for any work of the
+		United States government, and a work of the United States government is defined as one
+		prepared by an officer or employee as part of that person's official duties.</p>
+		<p>The practical consequences are worth spelling out, because they are unusual:</p>
+		<ul class="facts">
+			<li><b>There is no licence to accept.</b> Public domain is not a licence. There is
+			nothing to agree to and no terms to comply with.</li>
+			<li><b>There is no owner to ask.</b> Nobody can grant or withhold permission, because
+			nobody holds the right that permission would come from.</li>
+			<li><b>Anybody may do anything, including take it private.</b> A company may build
+			EPANET into a product and sell it, and need not publish what it changed. Many have.
+			That is not a loophole; it is the deliberate design of the public domain.</li>
+			<li><b>It cannot be withdrawn.</b> No future decision by anybody can make the
+			existing code less available than it is today.</li>
+		</ul>
+		<p>Our own project made the opposite choice, GNU GPL v3 or later, and is honest on the
+		<a href="index.html#honesty">front page</a> about that being a restriction EPA did not
+		impose.</p>
+	</div>
+
+	<div class="item">
+		<h3>Who develops it now</h3>
+		<p>After EPA's 2.2, EPANET's development continued in the open at Open Water Analytics,
+		a community effort in collaboration with EPA. Version 2.3 was released on 2024-07-17 and
+		2.3.5 on 2025-02-20. The engine our network editor runs is OWA-EPANET 2.3.5, which is why
+		a run report from our page prints a version number higher than the one on EPA's download
+		page.</p>
+	</div>
+
+	<div class="item">
+		<h3>If you want EPANET, get EPANET</h3>
+		<p>This site exists to point you at something else, so it should be clear about when the
+		something else is the wrong answer. Use EPANET itself if you need the reference
+		implementation, if you need a feature we do not have, if your reviewer expects EPANET
+		output, or if you simply prefer it. It is free, it is complete, it is maintained, and it
+		does not need our permission or our approval any more than we need its.</p>
+		<p class="mono"><a href="https://www.epa.gov/water-research/epanet">https://www.epa.gov/water-research/epanet</a></p>
+	</div>
+
+	<div class="item">
+		<h3>What we could not verify</h3>
+		<p>Two dates in the public record disagree with each other about when EPANET 2.2 was
+		released, so no date for 2.2 appears on this site. We have also not verified the exact
+		administrative name of the EPA division EPANET was developed in, which sources give
+		differently, so it is described here only as EPA's water research programme.</p>
+	</div>
+</section>
+
+</main>
+
+<footer>
+	<p><b>Not EPANET.</b> This site is not affiliated with, endorsed by, or sponsored by the
+	United States Environmental Protection Agency. EPANET is a public-domain program of the
+	US EPA.</p>
+	<p><a href="index.html">Back to the front page</a> &middot;
+	<a href="https://librewaternet.org">LibreWaterNet.org</a></p>
+</footer>
+
+</div>
+</body>
+</html>

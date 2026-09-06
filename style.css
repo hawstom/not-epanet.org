@@ -1,0 +1,234 @@
+/* ============================================================================
+   Not EPANET -- gateway site.
+
+   A SIBLING of librewaternet.org, not a departure: the same drawing-sheet
+   material (hairline frame, faint grid, condensed drafting labels, black ink
+   and water blue, one red pencil accent). Two deliberate differences:
+
+     1. NO WEB FONTS. That site links Google Fonts; this one may make no
+        external request of any kind, because the first thing a reader of a
+        page about honesty checks is the network tab. System stacks only.
+     2. The page is quieter. This is a doorway, not a shop window, so the
+        type scale tops out well below the sibling's hero.
+   ========================================================================= */
+
+:root {
+	--paper:      #FBFBF9;
+	--paper-2:    #F2F4F6;
+	--ink:        #14181C;
+	--ink-2:      #58636E;
+	--rule:       #D3DAE1;
+	--rule-soft:  #E7EBEF;
+	--water:      #1B5FA8;
+	--water-soft: #E6EFF8;
+	/* Red pencil. An engineer marks up a drawing in red; here it appears only
+	   on the disclaimer rule and on a correction mark, nowhere else. */
+	--pencil:     #B24428;
+
+	--sheet-max: 960px;
+	--step--1: clamp(.79rem, .75rem + .16vw, .87rem);
+	--step-0:  clamp(1rem, .96rem + .2vw, 1.08rem);
+	--step-1:  clamp(1.14rem, 1.06rem + .38vw, 1.34rem);
+	--step-2:  clamp(1.5rem, 1.3rem + .9vw, 2rem);
+	--step-3:  clamp(2rem, 1.5rem + 2.4vw, 3.4rem);
+
+	--serif: Georgia, "Iowan Old Style", "Times New Roman", Times, serif;
+	--sans: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+	--cond: "Barlow Condensed", "Archivo Narrow", "Arial Narrow", "Liberation Sans Narrow", var(--sans);
+	--mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+
+	color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+	:root:not([data-theme="light"]) {
+		--paper:      #10151A;
+		--paper-2:    #171E25;
+		--ink:        #E8EDF2;
+		--ink-2:      #97A4B1;
+		--rule:       #2C3841;
+		--rule-soft:  #1E262E;
+		--water:      #6FA8DC;
+		--water-soft: #17242F;
+		--pencil:     #E0745A;
+		color-scheme: dark;
+	}
+}
+:root[data-theme="dark"] {
+	--paper:      #10151A;
+	--paper-2:    #171E25;
+	--ink:        #E8EDF2;
+	--ink-2:      #97A4B1;
+	--rule:       #2C3841;
+	--rule-soft:  #1E262E;
+	--water:      #6FA8DC;
+	--water-soft: #17242F;
+	--pencil:     #E0745A;
+	color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+
+body {
+	margin: 0;
+	background: var(--paper);
+	color: var(--ink);
+	font-family: var(--serif);
+	font-size: var(--step-0);
+	line-height: 1.62;
+	-webkit-text-size-adjust: 100%;
+}
+
+/* The faint drafting grid, as on the sibling site. */
+.sheet-bg {
+	position: fixed; inset: 0; z-index: -1; pointer-events: none;
+	background-image:
+		linear-gradient(to right, var(--rule-soft) 1px, transparent 1px),
+		linear-gradient(to bottom, var(--rule-soft) 1px, transparent 1px);
+	background-size: 34px 34px;
+	opacity: .7;
+	-webkit-mask-image: radial-gradient(ellipse 120% 80% at 50% 0%, #000 30%, transparent 78%);
+	mask-image: radial-gradient(ellipse 120% 80% at 50% 0%, #000 30%, transparent 78%);
+}
+
+.sheet {
+	max-width: var(--sheet-max);
+	margin: 0 auto;
+	padding: 0 clamp(1rem, 4vw, 2.6rem);
+}
+
+h1, h2, h3 {
+	font-family: var(--sans);
+	margin: 0;
+	line-height: 1.12;
+	letter-spacing: -.02em;
+	text-wrap: balance;
+}
+h1 { font-size: var(--step-3); font-weight: 800; }
+h2 { font-size: var(--step-2); font-weight: 700; }
+h3 { font-size: var(--step-1); font-weight: 650; }
+
+p { margin: 0 0 1rem; max-width: 68ch; }
+a { color: var(--water); }
+a:hover, a:focus-visible { color: var(--pencil); }
+
+.label {
+	font-family: var(--cond);
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: .13em;
+	font-size: var(--step--1);
+	color: var(--ink-2);
+	margin: 0 0 .55rem;
+	display: block;
+}
+
+/* --- header ------------------------------------------------------------- */
+.topbar {
+	display: flex; align-items: baseline; justify-content: space-between;
+	gap: 1rem; flex-wrap: wrap;
+	padding: 1.3rem 0 1rem;
+	border-bottom: 1px solid var(--rule);
+}
+.wordmark {
+	font-family: var(--sans);
+	font-weight: 800; font-size: 1.05rem;
+	letter-spacing: -.02em;
+	color: var(--ink); text-decoration: none;
+}
+.wordmark .not { color: var(--pencil); }
+.topbar nav { display: flex; gap: 1.4rem; flex-wrap: wrap; }
+.topbar nav a { color: var(--ink-2); text-decoration: none; font-family: var(--sans); font-size: .92rem; }
+.topbar nav a:hover, .topbar nav a:focus-visible { color: var(--water); }
+
+/* --- the disclaimer, which is the whole point of the site ---------------- */
+.hero { padding: clamp(2rem, 5vw, 3.4rem) 0 0; }
+.hero h1 .rule-under {
+	display: block; width: 4.2rem; height: 3px;
+	background: var(--pencil); margin: 1rem 0 0;
+}
+.lede { font-size: var(--step-1); max-width: 46ch; margin: 1.2rem 0 0; }
+
+.disclaimer {
+	margin: 2rem 0 0;
+	border: 1px solid var(--pencil);
+	border-left-width: 4px;
+	background: var(--paper);
+	padding: 1.1rem clamp(1rem, 3vw, 1.6rem);
+}
+.disclaimer p:last-child { margin-bottom: 0; }
+.disclaimer .label { color: var(--pencil); }
+
+/* --- the two doors ------------------------------------------------------ */
+.doors {
+	display: grid; gap: 1rem; margin: 2.2rem 0 0;
+	grid-template-columns: 1fr;
+}
+@media (min-width: 720px) { .doors { grid-template-columns: 1fr 1fr; } }
+.door {
+	border: 1px solid var(--rule);
+	background: var(--paper);
+	padding: 1.2rem clamp(1rem, 3vw, 1.5rem);
+	display: flex; flex-direction: column;
+}
+.door h3 { margin-bottom: .5rem; }
+.door p { font-size: .96rem; flex: 1; }
+.btn {
+	align-self: flex-start;
+	font-family: var(--cond);
+	font-weight: 600; text-transform: uppercase; letter-spacing: .1em;
+	font-size: 1rem;
+	padding: .62rem 1.3rem;
+	border: 1px solid var(--water);
+	background: var(--water); color: var(--paper);
+	text-decoration: none;
+}
+.btn:hover, .btn:focus-visible { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+
+/* --- sections ----------------------------------------------------------- */
+section { padding: clamp(2.4rem, 6vw, 4rem) 0 0; }
+.sec-head { border-top: 1px solid var(--rule); padding-top: 1.2rem; margin-bottom: 1.4rem; }
+.sec-head h2 { max-width: 24ch; }
+.sec-head .sub { color: var(--ink-2); margin: .6rem 0 0; }
+
+.item { margin: 0 0 2rem; }
+.item h3 { margin-bottom: .5rem; }
+.item:last-child { margin-bottom: 0; }
+
+blockquote {
+	margin: 0 0 1rem;
+	padding: 0 0 0 1.1rem;
+	border-left: 3px solid var(--water);
+	color: var(--ink);
+	font-style: italic;
+}
+blockquote p:last-child { margin-bottom: 0; }
+blockquote cite { font-style: normal; font-family: var(--sans); font-size: .88rem; color: var(--ink-2); display: block; margin-top: .5rem; }
+
+/* A measured fact, set apart so it can be checked one at a time. */
+.facts { list-style: none; margin: 0 0 1rem; padding: 0; max-width: 68ch; }
+.facts li {
+	border-top: 1px solid var(--rule-soft);
+	padding: .7rem 0;
+}
+.facts li:last-child { border-bottom: 1px solid var(--rule-soft); }
+.facts b { font-family: var(--sans); font-weight: 650; }
+code, .mono { font-family: var(--mono); font-size: .9em; }
+
+/* The licence-required acknowledgement and other fine print. */
+.finewords {
+	font-size: .9rem; color: var(--ink-2);
+	background: var(--paper-2);
+	border: 1px solid var(--rule-soft);
+	padding: .8rem 1rem;
+	max-width: 68ch;
+}
+.finewords p { margin: 0; max-width: none; }
+
+footer {
+	margin-top: clamp(3rem, 8vw, 5rem);
+	border-top: 1px solid var(--rule);
+	padding: 1.4rem 0 3rem;
+	font-size: .9rem;
+	color: var(--ink-2);
+}
+footer p { max-width: 72ch; }
