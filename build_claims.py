@@ -29,9 +29,10 @@ PUBLIC_REWRITES = [
     # (The row 1.3 rewrite that stood here is gone: Tom confirmed the EPA had not been
     # contacted on 2026-09-06, so CLAIMS.md now records the confirmation and there is
     # no instruction left to hide.)
-    # Second person, addressed to the maintainer, in a document a stranger is reading.
-    (r"\*\*This is a real cost to\s+a gratitude page and Tom should rule on it:\*\*",
-     "**This is a real cost to a gratitude page:**"),
+    # (The §7 rewrite that stood here is gone too: Tom ruled on the credit on 2026-09-06,
+    # so the sentence asking him to no longer exists in the source. The list is empty on
+    # purpose -- a rewrite is a place where the published page and the working document say
+    # different things, which is a debt, not a feature. Fix the source instead.)
 ]
 
 

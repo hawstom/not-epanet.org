@@ -18,6 +18,7 @@ model/example/demonstration/leadership of deep honesty and deep gratitude."*
 | `claims.html` | The ledger as a page. **Generated. Do not edit by hand** |
 | `CLAIMS.md` | Every factual assertion on the site, one per row, with its source. The source of truth for `claims.html` |
 | `build_claims.py` | Renders `CLAIMS.md` to `claims.html`. `--check` fails if the page is stale |
+| `check.sh` | Every check this repository runs. Six of them, seconds. Run before every commit |
 
 ## Why three pages and not four
 
@@ -87,6 +88,24 @@ Everything is in `CLAIMS.md`, row by row, with a source for each. In summary:
   which already has one.
 - **No claim about phones**, and no claim about what the software will do next.
 
+## Before every commit: `sh check.sh`
+
+Six checks, and each one holds a sentence this site PRINTS, which is the only kind of rule worth a
+script here. Every page is a document (doctype, `lang`, viewport, description, charset in the first
+1024 bytes); **no page fetches anything from anywhere**, which is the promise in every footer; no em
+dash in visitor text; no local link or asset missing; the published ledger matches the working one;
+and no private individual is named with a credential.
+
+Two of them were written after the review below and are not decoration. The fetch check exists
+because the sibling site made the same promise while loading three font families from Google. The
+name check exists because a board member's name, credential and country reached the **live ledger
+page**, which is the last page on this site that should carry something nobody meant to publish.
+
+The text extraction the checks share is deliberately non-greedy, and that is the whole difficulty:
+written the natural way in sed, a `/<script>/,/<\/script>/` range eats the rest of the document when
+the closing tag shares a line with the opening one, and a check that deletes its own haystack
+passes. Mutation testing caught it; keep testing them that way.
+
 ## Conventions
 
 - **Oxford style, serial comma included** (Tom, 2026-09-06).
@@ -97,9 +116,12 @@ Everything is in `CLAIMS.md`, row by row, with a source for each. In summary:
 - Light and dark are both painted explicitly; `prefers-color-scheme` and a `data-theme`
   override both work, matching the sibling site.
 
-## Not done
+## State
 
-Not registered, not deployed, not pushed anywhere. One local git repository, no remote.
+**Live at https://not-epanet.org**, with `notepanet.org` redirecting to it, and pushed to
+`github.com/hawstom/not-epanet.org`. Everything here is published the moment it is deployed, so a
+wrong sentence is a wrong sentence on the public web. Run `sh check.sh` and
+`python3 build_claims.py --check` before every commit.
 
 ## Corrections from Tom's first reading, 2026-09-06
 
@@ -125,7 +147,9 @@ the site's own subject makes getting these wrong worse than getting them wrong a
     multi-labels, and a menu system we say we HOPE is less confusing. **The lesson is that "where
     we are ahead" is the hardest claim on a site like this to get right**, because it is the one
     claim whose evidence is a program none of us runs daily.
-- **"No board" is gone.** Tom has a board member: Mary Cabais, P.E., in the Philippines.
+- **"No board" is gone.** Tom has a board member. The person is not named here: this
+  repository is public, and naming a living person in it is their decision to make and not
+  ours. The site itself never claimed either way.
 
 And two additions rather than corrections:
 
@@ -141,3 +165,28 @@ And two additions rather than corrections:
 - **Extended period simulation is called that.** Not "a run over time", not "simulation over time".
   Tom, having conceded the alternative reads better: *"But for an engineering software, let's do
   what you said: Use the EPANET language."* The suite now has a build check enforcing it.
+
+## The editorial review, 2026-09-06
+
+A second reading, this time by an editor briefed to find what would embarrass the masthead, and to
+sniff for AI slop. The findings and Tom's ruling on each are in the suite's
+`dev/editorial-review-2026-09-06.md`, keyed `EDR-nn`. What changed here:
+
+- **The boasting went.** Tom, on the lede: *"Methinkest thou boastest too much."* The page had been
+  announcing its own honesty (**Deep honesty**, *said without decoration*, *None of them is
+  flattering, and that is the point*, *we are not going to dress it up*) while making a case that
+  needs no framing. Every clause that praised the page's own conduct is gone; every fact is still
+  there. **Do not write another one.** An honest page is honest in its declarative sentences.
+- **Honesty item 3 says something.** It was a heading and a posture. It now carries the two dates
+  Tom supplied: development started 28 July 2026, one real-world design report as of 1 September
+  2026. Ledger row 3.7a.
+- **The ledger cites a public repository**, not `~/webdev/...` on one laptop. A page that says "this
+  is where you check them" and then names a folder nobody can open is asking to be taken on trust,
+  which is the one thing it exists not to do.
+- **The ramp arithmetic was wrong.** Row 2.11b said "41 Brewer ramps"; 41 is the whole palette and
+  35 of them are Brewer's. It contradicted librewaternet.org, on the page whose only job is being
+  checkable.
+- **§7 no longer publishes a commercial reason on a gratitude page** (Tom's ruling, EDR-18). The
+  credit to the browser build of the engine stands as written.
+- **The 2.2 date is an estimate rather than a refusal**: around early 2020, marked as approximate.
+- **Nobody private is named**, here or on the live ledger, and `check.sh` holds it.

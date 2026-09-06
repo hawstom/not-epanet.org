@@ -1,8 +1,9 @@
 # Every factual claim on this site, with its source
 
-One row per assertion, so each can be checked on its own. `EC` means the EngCalcs repository at
-`~/webdev/hawsedc.subset/engcalcs`. Anything we could not verify is in the last section, and is
-either absent from the site or flagged on the site itself.
+One row per assertion, so each can be checked on its own. `EC` means the EngCalcs repository,
+which is public at [github.com/hawstom/engcalcs](https://github.com/hawstom/engcalcs); a row citing
+a path inside it is citing a file you can open. Anything we could not verify is in the last section,
+and is either absent from the site or flagged on the site itself.
 
 Checked 2026-09-06.
 
@@ -35,7 +36,7 @@ Checked 2026-09-06.
 | 2.10 | Element vocabulary, curve types, rule grammar, and unit-switch behaviour follow EPANET | `EC/CLAUDE.md`: element types list; "EPANET HAS EXACTLY FOUR KINDS"; `EC/js/lpn-rules.js` is "EPANET's own grammar"; "EPANET behaves the same way we do" on unit switching |
 | 2.11 | Curve editor modelled on EPANET's; table of assets is the view EPANET has had since 2.0; EPANET 2.2's five map colours are in the palette unsoftened | `EC` commit `7b146c1d` "Curve editor reads like EPANET's"; `EC/js/looped-network.js` comment on the tables pane, "EPANET has had it since 2.0"; `EC/js/lpn-ramps.js`: "The five map colours of EPANET 2.2 ... Kept unsoftened" |
 | 2.11a | **They are NOT the default.** The shipped default is Viridis, for both nodes and links | `EC/js/looped-network.js` `defaultSettings()`: `colorRampNode: 'viridis', colorRampLink: 'viridis'`. **Corrected 2026-09-06** after Tom challenged the original claim; the earlier wording was false, and a comment in `EC/js/looped-network.js` had said the same false thing, which is where it came from. `epanet` is only the fallback for an unknown ramp key. |
-| 2.11b | Viridis is perceptually uniform and readable to colour-blind viewers; the rest of the palette is Brewer's | `EC/js/lpn-ramps.js`: 41 Brewer ramps plus viridis/magma/inferno/plasma (CC0, BIDS) plus EPANET's rainbow plus Gray |
+| 2.11b | Viridis is perceptually uniform and readable to colour-blind viewers; the rest of the palette is Brewer's | `EC/js/lpn-ramps.js`: 41 ramps in all: 35 of Brewer's (18 sequential, 9 diverging, 8 qualitative), plus viridis/magma/inferno/plasma (CC0, BIDS), plus EPANET's rainbow, plus Gray |
 | 2.11c | **The features named as not simply downstream**: scenarios, a world map, find and replace, flexible multi-labels, and a menu system we HOPE is easier | `EC/CLAUDE.md`: scenarios are guarded by `scenario_seam_check.php` and `setProp()`; the world map is `project.basemap` with OSM and Mapbox raster tiles (task 497, `EC/js/lpn-terrain.js`); Find and replace is named in the `lpn_` section (task 542); multi-line and link-anchored Text labels are claim 2.5b's own impossible round trip. **Corrected 2026-09-06**: the earlier wording named *a profile tool* and *a search* as places we are not downstream. Tom struck it, saying *"EPANET has not only a profile tool, but graphs of time series, contours, frequency, and system flow"*, and he supplied this list himself. The menu-system claim is deliberately written as a hope, not a fact, because nobody has measured it. |
 
 ## 3. Honesty items 2 to 5 (index.html)
@@ -46,9 +47,10 @@ Checked 2026-09-06.
 | 3.2 | The software is GNU GPL v3 or later | `EC/CLAUDE.md` licence line; `EC/dev/positioning.md` §2 |
 | 3.3 | EPANET carries no licence because a US government work has no copyright to license | 17 U.S.C. § 105; see 4.2 |
 | 3.4 | "We are what we are ... we have no idea what we are not and what we don't know" | Tom Haws, 2026-08-22, quoted in `EC/dev/positioning.md` §2, which records it as written *for* the LibreWaterNet splash page and therefore sanctioned for public use |
-| 3.5 | We do not publish a completeness claim against EPANET | `EC/dev/positioning.md` §2: "never write a completeness claim against EPANET"; `~/webdev/librewaternet.org/CLAUDE.md` restates it |
+| 3.5 | We do not publish a completeness claim against EPANET | `EC/dev/positioning.md` §2: "never write a completeness claim against EPANET"; the LibreWaterNet.org repository restates it |
 | 3.6 | The AI paragraph, quoted | Tom Haws, verbatim, 2026-09-06, supplied in the brief for this site |
-| 3.7 | No foundation, no governance document, no funding | `EC/dev/positioning.md` §1 and §8. **"No board" was removed 2026-09-06**: Tom names a board member, Mary Cabais, P.E., in the Philippines. |
+| 3.7 | No foundation, no governance document, no funding | `EC/dev/positioning.md` §1 and §8. **"No board" was removed 2026-09-06**: there is a board member, not named here. Naming a living person on a public page is their decision, not ours, so the site claims neither a board nor the absence of one. |
+| 3.7a | Development started on 28 July 2026, and as of 1 September 2026 the software has carried one real-world design report | Tom Haws, 2026-09-06. **Added 2026-09-06**, when honesty item 3 stopped saying "we are not going to dress it up" and started saying how new, which is a fact and needs a row like any other |
 | 3.8 | 27 languages | `EC/lib/lang.ec.*.php` is 27 files. Stated as 27 on librewaternet.org |
 
 ## 4. Gratitude (index.html)
@@ -59,7 +61,7 @@ Checked 2026-09-06.
 | 4.2 | 17 U.S.C. § 105: copyright is not available for any work of the United States government; a "work of the United States Government" is one prepared by an officer or employee as part of official duties (§ 101) | [uscode.house.gov, title 17 § 105](https://uscode.house.gov/view.xhtml?req=%28title%3A17+section%3A105+edition%3Aprelim%29); [Copyright status of works by the federal government](https://en.wikipedia.org/wiki/Copyright_status_of_works_by_the_federal_government_of_the_United_States) |
 | 4.3 | EPANET was created by Lewis A. Rossman for EPA and first appeared in 1993 | [Wikipedia: EPANET](https://en.wikipedia.org/wiki/EPANET); [EPA Science Matters, EPANET 2.2.0](https://www.epa.gov/sciencematters/epanet-220-epa-and-water-community-collaboration) |
 | 4.4 | A formal report on the EPANET water quality model was published in 1993 | [OSTI record, EPANET water quality model](https://www.osti.gov/biblio/5795398); [EPA Science Inventory](https://cfpub.epa.gov/si/si_public_record_Report.cfm?Lab=NRMRL&dirEntryID=44860) |
-| 4.5 | 2.2 was the last release made by EPA itself | [USEPA/EPANET2.2 on GitHub](https://github.com/USEPA/EPANET2.2); `EC/js/vendor/README.md`: "EPANET development moved to Open Water Analytics ... after EPA's 2.2.0". **No date for 2.2 is stated on the site**, see section 6 |
+| 4.5 | 2.2 was the last release made by EPA itself | [USEPA/EPANET2.2 on GitHub](https://github.com/USEPA/EPANET2.2); `EC/js/vendor/README.md`: "EPANET development moved to Open Water Analytics ... after EPA's 2.2.0". Only an approximate date is stated on the site, see section 6 |
 | 4.6 | EPANET is used by utilities, consultants, regulators, and academics worldwide, and its engine is embedded in many other packages | [Wikipedia: EPANET](https://en.wikipedia.org/wiki/EPANET); [EPA Science Matters](https://www.epa.gov/sciencematters/epanet-220-epa-and-water-community-collaboration) |
 | 4.7 | Open Water Analytics is a community effort in collaboration with EPA; 2.3 released 2024-07-17, 2.3.5 on 2025-02-20 | [OpenWaterAnalytics/EPANET releases](https://github.com/OpenWaterAnalytics/EPANET/releases); `EC/js/vendor/README.md` |
 | 4.8 | The browser build of the engine is MIT, © Luke Butler, wrapping MIT OWA-EPANET, compiled to WebAssembly | `EC/js/vendor/README.md`; `EC/js/vendor/epanet-js.LICENSE`. **The package's own name is deliberately not printed on the site**, see section 7 |
@@ -67,7 +69,8 @@ Checked 2026-09-06.
 | 4.10 | Colour schemes, Apache-2.0, © 2002 Cynthia Brewer, Mark Harrower, and The Pennsylvania State University | `EC/js/lpn-ramps.js` licence block; [colorbrewer2.org/export/LICENSE.txt](https://colorbrewer2.org/export/LICENSE.txt) |
 | 4.11 | viridis, magma, inferno, plasma released CC0 by Nathaniel J. Smith, Stefan van der Walt, and (viridis) Eric Firing | `EC/js/lpn-ramps.js`; [github.com/BIDS/colormap](https://github.com/BIDS/colormap) |
 | 4.12 | OpenStreetMap supplies the street basemap and Nominatim answers place-name search; Mapbox supplies satellite imagery and terrain elevation | `EC/CLAUDE.md`: the four third-party requests, each opt-in |
-| 4.13 | The third-party **code** is vendored; a copy travels with the software rather than being fetched while you work. The two **services** in 4.12 are not code and are fetched over the network, each behind its own consent gate | `EC/js/vendor/README.md`: "Everything this site loads comes from this site. There is no CDN, no hosted font, and no third-party code of any kind." Map tiles are the stated data exception, and the site says the tiles come from those services  **Corrected 2026-09-06**: the page previously said \"all of them are vendored\" over a list that included OpenStreetMap, Nominatim, and Mapbox, which was false. The list is now split, and the services carry their own paragraph saying they are off until turned on. |
+| 4.12a | Public domain under § 105 is a statement about United States law; the site says so in those words | 17 U.S.C. § 105 denies copyright to a US government work; the position outside the United States is not governed by it. **Corrected 2026-09-06** after an editorial review pointed out that "in the public domain by operation of law" stood next to "a working engineer anywhere on earth" |
+| 4.13 | The third-party **code** is vendored; a copy travels with the software rather than being fetched while you work. The two **services** in 4.12 are not code and are fetched over the network, each behind its own consent gate | `EC/js/vendor/README.md`: "Everything this site loads comes from this site. There is no CDN, no hosted font, and no third-party code of any kind." Map tiles are the stated data exception, and the site says the tiles come from those services  **Corrected 2026-09-06**: the page previously said "all of them are vendored" over a list that included OpenStreetMap, Nominatim, and Mapbox, which was false. The list is now split, and the services carry their own paragraph saying they are off until turned on. |
 | 4.14 | ColorBrewer published 2002 by Brewer, Harrower, and Penn State, funded by the NSF Digital Government program through the GeoVISTA Center | [Wikipedia: ColorBrewer](https://en.wikipedia.org/wiki/ColorBrewer); [ColorBrewer: Learn More, Penn State](https://www.personal.psu.edu/cab38/ColorBrewer/ColorBrewer_learnMore.html) |
 | 4.15 | The schemes are designed per class count and tested for photocopying, projection, and colour-blind readers | `EC/js/lpn-ramps.js`: "Brewer PUBLISHES a separate, individually designed set for each class count"; [ColorBrewer: Learn More](https://www.personal.psu.edu/cab38/ColorBrewer/ColorBrewer_learnMore.html) on display environments and colourblind-safe options |
 | 4.16 | Cynthia Brewer received the ICA Carl Mannerfelt Gold Medal in 2023 | [Wikipedia: Cynthia Brewer](https://en.wikipedia.org/wiki/Cynthia_Brewer); [Penn State Geography directory](https://www.geog.psu.edu/directory/cynthia-brewer) |
@@ -86,10 +89,11 @@ Checked 2026-09-06.
 
 ## 6. Stated on the site as unverified
 
-- **The release date of EPANET 2.2.** [Wikipedia](https://en.wikipedia.org/wiki/EPANET) gives
-  July 23, 2020. `EC/js/vendor/README.md` records "EPA's 2.2.0 of December 2019". We did not
-  resolve which is right, so **no 2.2 date appears anywhere on the site**, and `epanet.html`
-  says the sources disagree.
+- **The exact release date of EPANET 2.2.** [Wikipedia](https://en.wikipedia.org/wiki/EPANET)
+  gives July 23, 2020. `EC/js/vendor/README.md` records "EPA's 2.2.0 of December 2019". We did not
+  resolve which is right, so the site says **around early 2020** and says in as many words that it
+  is an approximation. Tom's ruling, 2026-09-06: an estimate a reader can use beats a refusal,
+  as long as it is marked as one.
 - **The exact administrative name of the EPA division.** Sources give "Water Supply and Water
   Resources Division" (Wikipedia) and "Drinking Water Research Division" (the 1993 report
   abstract). The site says only "EPA's water research programme" and states that it did not
@@ -103,13 +107,11 @@ Checked 2026-09-06.
   the name in no heading and in no product or control name. The one prose mention names the
   source of the colours, which is attribution and not promotion.
 - **No live commercial trademark.** `EC/dev/positioning.md` §1 and ROADMAP task 296 ban naming
-  competing products. The site therefore credits the browser build of the EPANET engine by
-  licence, author, and function, but does not print the package's name. **This is a real cost to
-  a gratitude page and Tom should rule on it:** thanking a piece of software without saying its
-  name is thin thanks, and the package in question is a library, not a competing product, even
-  though a differently-named web application by other people is easily confused with it.
+  competing products. The site credits the browser build of the EPANET engine by licence, author,
+  and function. Ruled on by Tom, 2026-09-06: the credit stands as written and the reasoning behind
+  it is not published, because a paragraph about competitors is not what a gratitude page is for.
 - **No claim about phones, no comparison, no feature table, no completeness claim.** All from
-  `EC/dev/positioning.md` and `~/webdev/librewaternet.org/CLAUDE.md`.
+  `EC/dev/positioning.md` and the LibreWaterNet.org repository.
 
 ## 8. Claims deliberately not made
 
@@ -129,6 +131,6 @@ Added 2026-09-06, after a review found these assertions on the page with no row 
 | 9.2 | Free, no sign-up, runs in your browser, in 27 languages | `EC/CLAUDE.md`: no database, no authentication, all computation client-side; `EC/lib/lang.ec.*.php` is 27 files |
 | 9.3 | The project is looking for advisors, bug reports, power users with wish lists, and non-profit directors, not for money | `EC/dev/positioning.md` §1, Tom's own four phrases, used in his order |
 | 9.4 | It is a web page rather than a Windows program | EPA distributes EPANET as a Windows program from its own page; this suite runs in a browser (`EC/CLAUDE.md`). Not a claim that EPANET is Windows-only, and the site does not make one |
-| 9.5 | Neither page makes any request to another server: no fonts, no scripts, no images, no analytics, no cookies, no storage | Verified 2026-09-06 by reading both pages and the stylesheet: no `<img>`, no `<script>`, no `url()`, no `@import`, and no webfont link. This is the claim a sceptical reader tests first, so it is checked on every change |
+| 9.5 | No page makes any request to another server: no fonts, no scripts, no images, no analytics, no cookies, no storage | `check.sh`, check 2, which fails the build on a cross-origin `src`, `href`, `@import` or `url()`, and on any storage call. **Held by a script since 2026-09-06**, having been held by somebody remembering until then: the sibling site made the same promise and was fetching three font families from Google the whole time. It is the claim a sceptical reader tests first |
 | 9.6 | EPANET runs an instant or a week | Follows from 5.1: extended-period simulation with a user-set duration |
 | 9.7 | This page exists because the site says every claim is checkable | The site said so before this page existed, which was the defect that produced it |
