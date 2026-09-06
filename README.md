@@ -114,8 +114,13 @@ And two additions rather than corrections:
 
 - **The SEO motive is disclosed.** The draft said we use EPANET's name *"for one reason only"*.
   Tom: *"Honesty requires that we disclose all three reasons... I don't want to hide the SEO motive
-  or pretend it isn't important."* Three numbered reasons now: to connect with EPANET users, to give
-  credit, and to be found.
+  or pretend it isn't important."* His three, used as he wrote them: to connect with EPANET users,
+  to give credit, and to tell you plainly what we are not.
+  - **This took two passes and the first one failed in an instructive way.** It listed "to connect
+    with EPANET users" and "to be found" as two separate reasons, which is the same reason twice,
+    and pushed his third out of the list into a trailing sentence. Tom: *"You essentially repeated
+    the first twice and lost the third."* The SEO motive is not a fourth reason competing with his
+    three; it is the MECHANISM of the first, and it is now stated inside it in as many words.
 - **Extended period simulation is called that.** Not "a run over time", not "simulation over time".
   Tom, having conceded the alternative reads better: *"But for an engineering software, let's do
   what you said: Use the EPANET language."* The suite now has a build check enforcing it.
