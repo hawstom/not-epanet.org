@@ -108,6 +108,13 @@ the site's own subject makes getting these wrong worse than getting them wrong a
 - **The interface claim was humble to the point of misleading.** *"Follows EPANET's"* is now
   *"inspired by and informed by"*, in Tom's own words, and the bullet says where the editor is not
   downstream at all.
+  - **And the second half of that bullet was then wrong the other way, corrected 2026-09-06.** It
+    claimed a profile tool and a search as places we are not simply downstream. Tom: *"EPANET has
+    not only a profile tool, but graphs of time series, contours, frequency, and system flow."* He
+    supplied the replacement list himself — scenarios, a world map, find and replace, flexible
+    multi-labels, and a menu system we say we HOPE is less confusing. **The lesson is that "where
+    we are ahead" is the hardest claim on a site like this to get right**, because it is the one
+    claim whose evidence is a program none of us runs daily.
 - **"No board" is gone.** Tom has a board member: Mary Cabais, P.E., in the Philippines.
 
 And two additions rather than corrections:
