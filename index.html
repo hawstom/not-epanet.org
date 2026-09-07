@@ -100,26 +100,22 @@
 		listed with its source on the <a href="claims.html">claims page</a>:</p>
 		<ul class="facts">
 			<li><b>The engine is EPANET's, and it ships inside the page.</b> A 679 KB browser
-			build of OWA-EPANET 2.3.5, released 2025-02-20, is vendored in the repository and
-			loaded on demand. We did not write a solver engine to compete with it. We wrote a
-			drawing surface and put EPANET underneath it.</li>
+			build of OWA-EPANET 2.3.5, released 2025-02-20, loaded on demand. We wrote a drawing
+			surface and put EPANET underneath it.</li>
 			<li><b>Most of the answers only exist because it is there.</b> Extended period
-			simulation, water age, source trace, chemical decay, pump energy, rule-based controls,
-			and pressure-reducing, pressure-sustaining, and flow-control valves all run through the
-			EPANET engine and through nothing else. Our own solver does steady state (single
-			moment), pressures and flows only. It has no time dimension and is not currently
-			planned to get one.</li>
+			simulation, water age, source trace, chemical decay, pump energy, rule-based controls
+			and pressure-reducing, pressure-sustaining and flow-control valves run through the
+			EPANET engine and nothing else. Our own solver does one instant, pressures and flows
+			only, and is not planned to do more.</li>
 			<li><b>The interchange format is EPANET's.</b> We read and write EPANET's own
 			<code>.inp</code> file, section by section across the sections we support,
 			from <code>[TITLE]</code> to <code>[END]</code>, and a value you did not edit comes back out character for
 			character.
-			<span class="qualify">We also have a native format of our own: a project
-			saves as JSON, because there are things an <code>.inp</code> cannot hold. Scenarios. Saved profile paths. The background picture
-			itself, which an <code>.inp</code> can name but cannot contain. Map tiles and the
-			view you were looking at. A Text label anchored to a pipe, or one with more than one
-			line in it. Longitude and latitude for a project drawn on the world. Everything an
-			<code>.inp</code> can carry still round-trips through one, and the five things it
-			cannot are reported to you rather than silently dropped.</span></li>
+			<span class="qualify">We have a format of our own too: a project saves as JSON,
+			because an <code>.inp</code> cannot hold scenarios, saved profile paths, the background
+			picture itself, map tiles and your view, a Text label with more than one line, or
+			longitude and latitude. Everything an <code>.inp</code> can carry still round-trips
+			through one, and the five things it cannot are reported rather than dropped.</span></li>
 			<li><b>We check ourselves against EPA's own published answers.</b> Our extended period
 			simulation is compared against EPA's own report for its Net3 example network: 2,425 head
 			comparisons across 25 reporting steps, agreeing to 0.005 ft. Water quality is
@@ -127,23 +123,20 @@
 			report's own energy table. EPANET is the truth we are measured against.</li>
 			<li><b>Even the arithmetic is EPANET's.</b> Our one Hazen-Williams coefficient pair is
 			derived from EPANET's <code>h = 4.727 L Q^1.852 / (C^1.852 d^4.871)</code>, not from
-			the more commonly quoted metric restatement, because EPANET is the program our users
-			will check us against. The two disagree by up to 0.12% across pipe sizes from 50 mm
-			to 2 m, and we chose to agree with EPANET.</li>
+			the more commonly quoted metric restatement. The two disagree by up to 0.12% from
+			50 mm to 2 m, and we chose to agree with EPANET, because EPANET is what our users will
+			check us against.</li>
 			<li><b>The vocabulary is EPANET's.</b> Junction, reservoir, tank, pipe, pump, valve.
-			Extended period simulation. Trials and
-			iterations, static pressure, drawdown, converge. The four curve types. The grammar of
-			a rule. What happens when you change a unit. An engineer who knows EPANET should not
-			have to learn a second dialect from us, and we have a check that fails the build when
-			we start writing one.</li>
+			Extended period simulation. Trials and iterations, static pressure, drawdown, converge.
+			The four curve types. The grammar of a rule. What happens when you change a unit. An
+			engineer who knows EPANET should not have to learn a second dialect from us, and a
+			build check fails when we start writing one.</li>
 			<li><b>The interface is inspired by and informed by EPANET's.</b> Its curve editor
-			and its table of assets are where ours came from, and its own five map colours are in
-			our palette unsoftened, so a reader who knows an EPANET pressure map can have it
-			back, though our own shipped default is Viridis rather than EPANET's. There are
-			some features that are not downstream of it:
-			scenarios, a world map, find and replace, flexible multi-labels, and what we hope is a
-			less confusing and easier interface (menu system). And it is a web page rather than a
-			Windows program. Some of that is better and some of it is just different.</li>
+			and its table of assets are where ours came from, and its five map colours are in our
+			palette unsoftened, though our default is Viridis. Not downstream of it: scenarios, a
+			world map, find and replace, flexible multi-labels, a menu system we hope is easier,
+			and being a web page rather than a Windows program. Some of that is better and some is
+			just different.</li>
 		</ul>
 		<p>That is the dependency graph. If EPANET had not existed, or had not been given
 		away, this project would not exist.</p>
@@ -218,11 +211,10 @@
 		<h3>The United States government, and the people who fund it</h3>
 		<p>EPANET was paid for by American taxpayers and given to the world for nothing.
 		Under <a href="https://uscode.house.gov/view.xhtml?req=%28title%3A17+section%3A105+edition%3Aprelim%29">17
-		U.S.C. &sect; 105</a>, copyright is not available for a work of the United States
-		government, meaning a work prepared by an officer or employee as part of that person's
-		official duties. So EPANET has no owner to ask, no fee, and no permission to seek. It is
-		in the public domain in the United States by operation of law, and is distributed to
-		the world on that basis.</p>
+		U.S.C. &sect; 105</a>, a work prepared by a federal officer or employee as part of their
+		duties cannot be copyrighted. So EPANET has no owner to ask, no fee and no permission to
+		seek: it is public domain in the United States by operation of law, and distributed to the
+		world on that basis.</p>
 		<p>That is an extraordinary thing to have done, and it is a gift rather than a
 		background condition. A working engineer anywhere on earth, in a country
 		that pays no American taxes, can model a water system tonight because of a decision made
@@ -300,21 +292,15 @@
 
 	<div class="item">
 		<h3>Cynthia Brewer, and the people who made maps readable</h3>
-		<p>A network map is worth nothing if a reader cannot tell the classes apart, and a
-		great deal of the work of making that possible was done by cartographers rather
-		than by engineers. Cynthia Brewer, a geographer at Penn State, published her colour
-		scheme advice for cartography in 2002 with Mark Harrower and Penn State, funded by the
-		National Science Foundation's Digital Government programme through the GeoVISTA Center.
-		The schemes are designed per class count, are tested for photocopying, for projection,
-		and for colour-blind readers, and they are the reason a five-class pressure map is
-		legible at all. The International Cartographic Association awarded her the Carl
-		Mannerfelt Gold Medal in 2023.</p>
-		<p>Her schemes ship in our software under the Apache License 2.0, whose clause 2 fixes
-		the exact wording of the acknowledgement below and whose clauses 4 and 5 forbid using the
-		project name to endorse or promote anything. So the sentence is reproduced verbatim and
-		untranslated, and no control, menu, or feature in our software carries the
-		ColorBrewer name. What follows
-		is the licence's own text, not ours:</p>
+		<p>A network map is worth nothing if a reader cannot tell the classes apart, and much of
+		the work of making that possible was done by cartographers rather than by engineers.
+		Cynthia Brewer, a geographer at Penn State, published her colour scheme advice in 2002
+		with Mark Harrower and Penn State. The schemes are designed per class count and tested for
+		photocopying, for projection and for colour-blind readers, which is why a five-class
+		pressure map is legible at all. The International Cartographic Association gave her the
+		Carl Mannerfelt Gold Medal in 2023.</p>
+		<p>Her schemes ship in our software under the Apache License 2.0, which fixes the wording
+		of the acknowledgement below. It is the licence's text, not ours:</p>
 		<div class="finewords">
 			<p>This product includes color specifications and designs developed by Cynthia Brewer (http://colorbrewer.org/).</p>
 		</div>
@@ -324,24 +310,17 @@
 		<h3>EPANET's own interface</h3>
 		<p>It is customary in this field to describe EPANET's user interface as dated. We decline
 		to. It is the interface that taught most working modellers what a network model is, and
-		our editor is informed by it deliberately: the curve editor is modelled on EPANET's, and
-		the table of assets is the view EPANET has had since version 2.0. EPANET 2.2's own five
-		map colours are in our palette unsoftened, so that a reader who knows an EPANET pressure
-		map can have it back.
-		<span class="qualify">They are not our default, and it would be easy to imply otherwise:
-		the shipped default is Viridis, chosen because it is perceptually uniform and readable to
-		colour-blind viewers. The rest of the palette is Cynthia Brewer's.</span></p>
+		ours is informed by it deliberately, item by item, in honesty item 1 above.</p>
 	</div>
 
 	<div class="item">
 		<h3>Richard M. Stallman, and the Free Software Foundation</h3>
 		<p>The Free Software Foundation released version 3 of the GNU General Public License on
-		2007-06-29. That licence is what our own software is published under, and it is the
-		instrument by which what we publish stays published. We did not have to design a legal
-		mechanism to keep this free. Somebody else spent decades doing that, and gave it away
-		too.</p>
-		<p>Whether it is the right choice for a project this dependent on public-domain work is
-		an open question, and honesty item 2 above is where we admit it.</p>
+		2007-06-29. It is what our software is published under, and the instrument by which what
+		we publish stays published. We did not have to design that mechanism; somebody else spent
+		decades on it and gave it away too. Whether it is the right choice for a project this
+		dependent on public-domain work is an open question, and honesty item 2 is where we admit
+		it.</p>
 	</div>
 
 	<div class="item">
