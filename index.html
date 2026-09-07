@@ -40,20 +40,19 @@
 	<p class="lede">It is a small, free, GPL-licensed water network modelling project that
 	could not exist without EPANET.</p>
 
-	<!-- THE DISCLAIMER IS THE PREMISE OF THE SITE, so it comes before the doors and
-	     before both sections; only the wordmark, the h1 and the lede precede it. The domain says "not", and a
-	     page that then spent 400 words before explaining what it is not would be
-	     using the word as a slogan. -->
+	<!-- THE DISCLAIMER BOX IS THE PREMISE OF THE SITE, so it comes before the doors and before
+	     both sections; only the wordmark, the h1 and the lede precede it. The domain says "not",
+	     and a page that then spent 400 words before explaining what it is not would be using the
+	     word as a slogan.
+
+	     **INSIDE THE BOX, THE THREE REASONS COME FIRST** (Tom, 2026-09-07: "Swap top and bottom").
+	     A reader who arrived from a search for EPANET is owed the answer to "why is this page
+	     called that" before the denial, or the denial reads as a disclaimer somebody was made to
+	     write. The denial is the next thing they read, in the same box, and `epanet.html` still
+	     leads with it because a page reached directly carries its own. -->
 	<div class="disclaimer">
 		<span class="label">Please read this first</span>
-		<p><b>EPANET is a program of the United States Environmental Protection Agency.</b>
-		This website is not EPA's. The software it points you to is not EPANET, is not a version
-		of EPANET, and is not an official successor to EPANET.</p>
-		<p>The EPA has not reviewed, endorsed, approved, sponsored, or been asked about any of
-		this. Nobody here has any affiliation with the EPA or with the United States government.
-		We have not been in touch with them. If you came looking for EPANET itself, get it from
-		the agency that made it: <a href="https://www.epa.gov/water-research/epanet">epa.gov/water-research/epanet</a>.</p>
-		<p>We use EPANET's name here for three reasons, and all three are worth stating:</p>
+		<p>We use EPANET's name here for three reasons:</p>
 		<ol class="reasons">
 			<li><b>To connect with EPANET users.</b> They are who this is for, and the mechanism is
 			worth naming: putting EPANET's name in our domain and in our page titles is how
@@ -63,6 +62,13 @@
 			the people who gave it away.</li>
 			<li><b>To tell you plainly what we are not.</b> Which is what this box is for.</li>
 		</ol>
+		<p><b>EPANET is a program of the United States Environmental Protection Agency.</b>
+		This website is not EPA's. The software it points you to is not EPANET, is not a version
+		of EPANET, and is not an official successor to EPANET.</p>
+		<p>The EPA has not reviewed, endorsed, approved, sponsored, or been asked about any of
+		this. Nobody here has any affiliation with the EPA or with the United States government.
+		We have not been in touch with them. If you came looking for EPANET itself, get it from
+		the agency that made it: <a href="https://www.epa.gov/water-research/epanet">epa.gov/water-research/epanet</a>.</p>
 	</div>
 
 	<div class="doors">
@@ -108,8 +114,8 @@
 			EPANET engine and nothing else. Our own solver does one instant, pressures and flows
 			only, and is not planned to do more.</li>
 			<li><b>The interchange format is EPANET's.</b> We read and write EPANET's own
-			<code>.inp</code> file, section by section across the sections we support,
-			from <code>[TITLE]</code> to <code>[END]</code>, and a value you did not edit comes back out character for
+			<code>.inp</code> file, from <code>[TITLE]</code> to <code>[END]</code> across the
+			sections we support, and a value you did not edit comes back out character for
 			character.
 			<span class="qualify">We have a format of our own too: a project saves as JSON,
 			because an <code>.inp</code> cannot hold scenarios, saved profile paths, the background

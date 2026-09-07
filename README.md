@@ -46,10 +46,12 @@ Everything is in `CLAIMS.md`, row by row, with a source for each. In summary:
 
 - It is **not** EPANET, **not** a version of EPANET, **not** an official successor, and **not**
   affiliated with, endorsed by, reviewed by, or sponsored by the US EPA or the US government.
-  This is the first block of substance on every page, before the doors and before both
-  sections; only the wordmark, the heading and the one-line lede come before it. **Corrected
-  2026-09-06**: this used to say "above everything else", which was false, and the same false
-  claim had been written into the page itself.
+  It is in the first block of substance on every page, before the doors and before both sections;
+  only the wordmark, the heading and the one-line lede come before it. **Corrected 2026-09-06**:
+  this used to say "above everything else", which was false, and the same false claim had been
+  written into the page itself. **Reordered 2026-09-07** on Tom's instruction: inside that block
+  the three reasons for using EPANET's name now come first and the denial follows them.
+  `epanet.html` still opens with the denial.
 - The project it points to is **deeply dependent on EPANET**, in seven specific and checkable
   ways: the vendored engine, the analyses that only run through it, the file format, the
   verification anchors, the Hazen-Williams constants, the element vocabulary, and the interface.
