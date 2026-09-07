@@ -64,7 +64,9 @@ Checked 2026-09-06.
 | 4.5 | 2.2 was the last release made by EPA itself | [USEPA/EPANET2.2 on GitHub](https://github.com/USEPA/EPANET2.2); `EC/js/vendor/README.md`: "EPANET development moved to Open Water Analytics ... after EPA's 2.2.0". Only an approximate date is stated on the site, see section 6 |
 | 4.6 | EPANET is used by utilities, consultants, regulators, and academics worldwide, and its engine is embedded in many other packages | [Wikipedia: EPANET](https://en.wikipedia.org/wiki/EPANET); [EPA Science Matters](https://www.epa.gov/sciencematters/epanet-220-epa-and-water-community-collaboration) |
 | 4.7 | Open Water Analytics is a community effort in collaboration with EPA; 2.3 released 2024-07-17, 2.3.5 on 2025-02-20 | [OpenWaterAnalytics/EPANET releases](https://github.com/OpenWaterAnalytics/EPANET/releases); `EC/js/vendor/README.md` |
-| 4.8 | The browser build of the engine is MIT, © Luke Butler, wrapping MIT OWA-EPANET, compiled to WebAssembly | `EC/js/vendor/README.md`; `EC/js/vendor/epanet-js.LICENSE`. **The package's own name is deliberately not printed on the site**, see section 7 |
+| 4.8 | The browser build of the engine is MIT, © Luke Butler, wrapping MIT OWA-EPANET, compiled to WebAssembly | `EC/js/vendor/README.md`; `EC/js/vendor/epanet-js.LICENSE`. **The name is printed as of 2026-09-06**, see 4.8a and section 7 |
+| 4.8a | People have wrapped, ported, rebuilt and taught EPANET for thirty years: Python and MATLAB toolkits, graphical front ends free and commercial, WebAssembly builds, and university courses. epanet-js is one of those builds and is the one we run | A characterisation, not an enumeration, and the site says so in as many words: it names them together because the list is longer than we know. The specific, checkable half is 4.8. EPANET first appeared in 1993 (4.3), which is where "thirty years" comes from |
+| 4.8b | That work was done before the age of AI, and it is what made it possible for one semi-retired engineer with an AI to build this in a summer | Tom Haws, 2026-09-06, whose tribute this is and who asked for it in these terms. The dates are 3.7a: development started 28 July 2026. Written as a measure of what they left behind, not as a claim about us |
 | 4.9 | Bootstrap 5.3.2, MIT, © 2011-2023 The Bootstrap Authors | `EC/js/vendor/README.md`; the licence header inside the vendored files |
 | 4.10 | Colour schemes, Apache-2.0, © 2002 Cynthia Brewer, Mark Harrower, and The Pennsylvania State University | `EC/js/lpn-ramps.js` licence block; [colorbrewer2.org/export/LICENSE.txt](https://colorbrewer2.org/export/LICENSE.txt) |
 | 4.11 | viridis, magma, inferno, plasma released CC0 by Nathaniel J. Smith, Stefan van der Walt, and (viridis) Eric Firing | `EC/js/lpn-ramps.js`; [github.com/BIDS/colormap](https://github.com/BIDS/colormap) |
@@ -106,10 +108,12 @@ Checked 2026-09-06.
   reproduces the required sentence verbatim, in English, untranslated, in its own box, and puts
   the name in no heading and in no product or control name. The one prose mention names the
   source of the colours, which is attribution and not promotion.
-- **No live commercial trademark.** `EC/dev/positioning.md` §1 and ROADMAP task 296 ban naming
-  competing products. The site credits the browser build of the EPANET engine by licence, author,
-  and function. Ruled on by Tom, 2026-09-06: the credit stands as written and the reasoning behind
-  it is not published, because a paragraph about competitors is not what a gratitude page is for.
+- **No live commercial trademark, and one deliberate exception.** `EC/dev/positioning.md` §1 and
+  ROADMAP task 296 ban naming competing products. **Tom lifted it for this one name on 2026-09-06**:
+  epanet-js is a library we depend on, not a product we compete with, and the honest way to credit a
+  library is to say what it is called. It is named inside a tribute to everybody who has extended
+  EPANET over thirty years, which is where he wanted it. The ban stands everywhere else, and no
+  competing application is named anywhere on this site.
 - **No claim about phones, no comparison, no feature table, no completeness claim.** All from
   `EC/dev/positioning.md` and the LibreWaterNet.org repository.
 

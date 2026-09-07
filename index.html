@@ -119,7 +119,7 @@
 			view you were looking at. A Text label anchored to a pipe, or one with more than one
 			line in it. Longitude and latitude for a project drawn on the world. Everything an
 			<code>.inp</code> can carry still round-trips through one, and the five things it
-			genuinely cannot are reported to you rather than silently dropped.</span></li>
+			cannot are reported to you rather than silently dropped.</span></li>
 			<li><b>We check ourselves against EPA's own published answers.</b> Our extended period
 			simulation is compared against EPA's own report for its Net3 example network: 2,425 head
 			comparisons across 25 reporting steps, agreeing to 0.005 ft. Water quality is
@@ -138,9 +138,9 @@
 			we start writing one.</li>
 			<li><b>The interface is inspired by and informed by EPANET's.</b> Its curve editor
 			and its table of assets are where ours came from, and its own five map colours are in
-			our palette unsoftened, so a reader who knows an EPANET pressure map can have that one
+			our palette unsoftened, so a reader who knows an EPANET pressure map can have it
 			back, though our own shipped default is Viridis rather than EPANET's. There are
-			some features that are not simply downstream:
+			some features that are not downstream of it:
 			scenarios, a world map, find and replace, flexible multi-labels, and what we hope is a
 			less confusing and easier interface (menu system). And it is a web page rather than a
 			Windows program. Some of that is better and some of it is just different.</li>
@@ -245,9 +245,27 @@
 		<h3>Open Water Analytics</h3>
 		<p>EPANET's development continued in the open after EPA's 2.2, as a community effort in
 		collaboration with EPA. Open Water Analytics released EPANET 2.3 on 2024-07-17 and 2.3.5
-		on 2025-02-20. <b>2.3.5 is the engine our software actually runs.</b> Every volunteer who
+		on 2025-02-20. <b>2.3.5 is the engine our software runs.</b> Every volunteer who
 		has filed an issue or a fix in that repository has, without knowing it, fixed something
 		for us.</p>
+	</div>
+
+	<div class="item">
+		<h3>Everybody who extended EPANET before we did</h3>
+		<p>For thirty years, people have been wrapping, porting, rebuilding, teaching and
+		arguing about this engine, mostly for nothing and mostly on their own time. The Python
+		and MATLAB toolkits. The graphical front ends, free and commercial. The WebAssembly
+		builds that put a hydraulic solver inside a browser tab at all, ours included:
+		<b>epanet-js</b>, MIT licensed, &copy; Luke Butler, which is the one we run. The
+		university courses that taught a generation to read an <code>.inp</code> file. The
+		people answering the same file-format question in public for the tenth year running.</p>
+
+		<p>We name them together because the list is longer than we know and we would get it
+		wrong. What we can say is what it cost them and what it cost us: they did that work
+		before the age of AI, in evenings and weekends and unpaid hours, and it is what made it
+		possible for one semi-retired engineer with an AI to build this in a summer. That is not
+		a boast about us. It is the measure of what they left lying around for somebody to pick
+		up, and the reason the polite thing to do with it is to give ours away too.</p>
 	</div>
 
 	<div class="item">
@@ -256,7 +274,7 @@
 		vendored, meaning a copy travels with the software rather than being fetched from
 		somebody else's server while you work.</p>
 		<ul class="facts">
-			<li><b>The browser build of the EPANET engine.</b> MIT licensed,
+			<li><b>epanet-js, the browser build of the EPANET engine.</b> MIT licensed,
 			&copy; Luke Butler, wrapping the MIT-licensed OWA-EPANET engine and compiling it to
 			WebAssembly. It is the single piece of code that makes an EPANET run possible inside a
 			web page with no server, and it is the reason this project could be built by one
@@ -311,7 +329,7 @@
 		our editor is informed by it deliberately: the curve editor is modelled on EPANET's, and
 		the table of assets is the view EPANET has had since version 2.0. EPANET 2.2's own five
 		map colours are in our palette unsoftened, so that a reader who knows an EPANET pressure
-		map can have exactly that one back.
+		map can have it back.
 		<span class="qualify">They are not our default, and it would be easy to imply otherwise:
 		the shipped default is Viridis, chosen because it is perceptually uniform and readable to
 		colour-blind viewers. The rest of the palette is Cynthia Brewer's.</span></p>

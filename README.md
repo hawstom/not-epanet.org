@@ -170,7 +170,7 @@ And two additions rather than corrections:
 
 A second reading, this time by an editor briefed to find what would embarrass the masthead, and to
 sniff for AI slop. The findings and Tom's ruling on each are in the suite's
-`dev/editorial-review-2026-09-06.md`, keyed `EDR-nn`. What changed here:
+`dev/editorial-review.md`, keyed `EDR-nn`. What changed here:
 
 - **The boasting went.** Tom, on the lede: *"Methinkest thou boastest too much."* The page had been
   announcing its own honesty (**Deep honesty**, *said without decoration*, *None of them is
