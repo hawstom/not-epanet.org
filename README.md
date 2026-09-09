@@ -14,7 +14,8 @@ model/example/demonstration/leadership of deep honesty and deep gratitude."*
 |---|---|
 | `index.html` | The disclaimer, the two doors, the honesty section, and the gratitude section |
 | `epanet.html` | What EPANET is, who made it, what public domain means, and where to get it |
-| `style.css` | The whole stylesheet. No other assets exist |
+| `style.css` | The whole stylesheet |
+| `favicon.svg` | The tab icon: `wt-wide-L`, the water tower glyph Tom chose 2026-09-09. The only other asset |
 | `claims.html` | The ledger as a page. **Generated. Do not edit by hand** |
 | `CLAIMS.md` | Every factual assertion on the site, one per row, with its source. The source of truth for `claims.html` |
 | `build_claims.py` | Renders `CLAIMS.md` to `claims.html`. `--check` fails if the page is stale |
