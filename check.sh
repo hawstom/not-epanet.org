@@ -128,5 +128,32 @@ for f in *.html *.md; do
 	grep -qE '\b[A-Z][a-z]+ [A-Z][a-z]+, P\.E\.' "$f" && bad "$f names a private individual with a credential; see check 6"
 done
 
+# ---------------------------------------------------------------------------
+# THE PRE-PUSH HOOK IS INSTALLED, AND IS THE ONE IN hooks/.
+#
+# A hook is a COPY in .git/hooks rather than core.hooksPath, because hooksPath resolves INTO THE
+# WORKING TREE: checking out a commit from before the hooks existed silently deletes every guard.
+# That was measured in the engcalcs repository, where a commit reached master unrefused for exactly
+# that reason -- it failed OPEN and SILENTLY, which is the worst way for a guard to fail. The copy
+# survives every checkout and buys one problem, staleness, which is what this checks.
+#
+# NOT-INSTALLED IS A FAILURE TOO, and that is the point: a fresh clone has no guard at all, and
+# nothing else would ever say so. `sh hooks/install.sh` is the whole fix.
+#
+# A push here PUBLISHES. That is why the gate is on push and not only on commit.
+# ---------------------------------------------------------------------------
+hookdir=$(git rev-parse --git-path hooks 2>/dev/null)
+for h in hooks/*; do
+    n=$(basename "$h")
+    [ "$n" = "install.sh" ] && continue
+    [ -f "$h" ] || continue
+    if [ ! -f "$hookdir/$n" ]; then
+        bad "the $n hook is NOT installed. This clone has no guard on push. Fix: sh hooks/install.sh"
+    elif ! cmp -s "$h" "$hookdir/$n"; then
+        bad "$hookdir/$n differs from hooks/$n -- the installed guard is not the one in this repository."
+        say "        Read both before choosing a direction, then: sh hooks/install.sh"
+    fi
+done
+
 if [ "$fail" = 0 ]; then say 'All checks pass.'; else say ''; say 'BLOCKING FAILURES above.'; fi
 exit "$fail"

@@ -1,0 +1,50 @@
+#!/bin/sh
+# Refuse to push unless `sh check.sh` passes.
+#
+# WHY THIS EXISTS. The engcalcs suite has had a pre-push gate since 2026-09-12; these two
+# repositories had NO hooks at all, and `dev/reputation-and-practice.md` §4 names that as the
+# second of the three real gaps: "the landing page is the most reputation-exposed surface of all
+# three and the least guarded." It is also the one that has already cost something -- the phone
+# claim and the "PC application" sentence both SHIPPED here and Tom struck them by reading, and
+# `librewaternet.org` returned 500 on every page from the day its symlink landed because the new
+# domain defaulted to ea-php56.
+#
+# IT RUNS THE SUITE HERE RATHER THAN READING A STAMP, and that is a deliberate difference from
+# engcalcs. There, `check_all.sh` takes minutes, so the hook compares a commit id that the suite
+# stamped; a stamp can go stale and needs its own check to prove it was written. Here `check.sh`
+# takes under two seconds, so running it is cheaper than the machinery for not running it, and
+# there is no stale state to get wrong.
+#
+# IT IS A COPY IN .git/hooks, NOT core.hooksPath, and that reversal was MEASURED in the sibling
+# repository: hooksPath resolves INTO THE WORKING TREE, so checking out a commit from before the
+# hooks existed silently deletes every guard. It failed OPEN and SILENTLY, and a commit went
+# straight onto master unrefused for exactly that reason. A copy survives every checkout and buys
+# one problem -- staleness -- which `check.sh` itself now reports.
+#
+# Every branch, not only master: these repositories have one branch, and a push here publishes.
+# Escape hatch: git push --no-verify.
+
+root=$(git rev-parse --show-toplevel 2>/dev/null) || exit 0
+[ -r "$root/check.sh" ] || {
+	echo "" >&2
+	echo "  REFUSED: no check.sh at $root. This hook cannot verify anything," >&2
+	echo "  and a guard that passes when it could not look is worse than none." >&2
+	echo "" >&2
+	exit 1
+}
+
+out=$(cd "$root" && sh check.sh 2>&1)
+rc=$?
+[ "$rc" = "0" ] && exit 0
+
+cat >&2 <<MSG
+
+  REFUSED: check.sh does not pass, and a push here PUBLISHES.
+
+$(printf '%s\n' "$out" | sed 's/^/      /')
+
+  Fix it and push again. Run it yourself with:  sh check.sh
+  Genuinely need to bypass?  git push --no-verify
+
+MSG
+exit 1
