@@ -1,0 +1,4 @@
+# TOOLING, NOT VISITOR MATERIAL. The exposure check and its selftest live here rather than at the
+# document root, because the document root of this site IS this repository.
+# `Require all denied` and NOT `Options -Indexes`: see tools/exposure-check.sh.
+Require all denied

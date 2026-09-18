@@ -129,6 +129,21 @@ for f in *.html *.md; do
 done
 
 # ---------------------------------------------------------------------------
+# NOTHING IS EXPOSED ON THE WEB BY DEFAULT
+#
+# The document root IS this repository, so every tracked directory is reachable over HTTP unless
+# something says otherwise. This domain is retired and every path 301s away, but a redirect is not a
+# denial -- and until 2026-09-18 the file holding that redirect lived only on the server, untracked.
+# The sibling site learned this the hard way the same day: librewaternet.org/tools/build-chrome.php
+# answered 200 and RAN, while its check.sh was green.
+#
+# The selftest is not ceremony: the check passes by finding nothing, which is also what it does when
+# it has gone blind.
+# ---------------------------------------------------------------------------
+sh tools/exposure-check.sh || bad "a directory of this site is exposed or undeclared (above)"
+sh tools/exposure-selftest.sh || bad "tools/exposure-check.sh no longer catches its own mutations"
+
+# ---------------------------------------------------------------------------
 # THE PRE-PUSH HOOK IS INSTALLED, AND IS THE ONE IN hooks/.
 #
 # A hook is a COPY in .git/hooks rather than core.hooksPath, because hooksPath resolves INTO THE

@@ -1,0 +1,3 @@
+# THE GIT HOOKS THIS REPOSITORY INSTALLS. Executable text, for a clone and not for a visitor.
+# `Require all denied` and NOT `Options -Indexes`: see tools/exposure-check.sh.
+Require all denied

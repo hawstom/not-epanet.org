@@ -1,0 +1,15 @@
+# WHICH TOP-LEVEL DIRECTORIES OF THIS SITE A VISITOR MAY REACH.
+#
+# The document root IS this repository -- deployment is `git pull` into ~/addon_html/not-epanet.org/
+# -- so every tracked directory is reachable over HTTP unless something says otherwise. This domain
+# is retired and every path 301s to librewaternet.org, but a redirect is not a denial: it is one
+# RewriteRule away from being gone, and until 2026-09-18 that rule lived ONLY on the server, in an
+# untracked file. Hence a declaration, and hence a block of our own beneath it.
+#
+# Format:  <web|deny>  <directory>  <the reason, in a few words>
+# A `deny` row also needs `Require all denied` in that directory's own .htaccess. NOT
+# `Options -Indexes`: where `AllowOverride Options` is not granted, an Options line returns 500 for
+# every request under the path. See the head of tools/exposure-check.sh.
+
+deny  hooks  the git hooks this repository installs; tooling, and executable text
+deny  tools  the exposure check and its selftest; a .php here would be EXECUTED by the server

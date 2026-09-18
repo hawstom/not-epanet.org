@@ -1,0 +1,44 @@
+# not-epanet.org -- RETIRED. Every path on this domain 301s to librewaternet.org.
+#
+# **THIS FILE LIVED ONLY ON THE SERVER, UNTRACKED, UNTIL 2026-09-18.** The redirect that retires the
+# domain, and the cPanel handler block that pins the PHP version, existed nowhere in this repository:
+# a careless delete on the host would have lost both with no record of what they had been, and no
+# check anywhere could see them. It is tracked now, byte for byte as the host had it, plus the
+# blanket dot-path rule below.
+#
+# cPanel REWRITES the block at the foot of this file whenever the vhost's PHP version changes, so a
+# local modification appearing there after a version change is cPanel's and not somebody's mistake.
+
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^not\-epanet\.constructionnotesmanager\.com$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.not\-epanet\.constructionnotesmanager\.com$
+RewriteRule ^/?$ "https\:\/\/librewaternet\.org\/" [R=301,L]
+RewriteCond %{HTTP_HOST} ^not\-epanet\.org$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.not\-epanet\.org$
+RewriteRule ^/?$ "https\:\/\/librewaternet\.org\/" [R=301,L]
+
+# Retire every remaining path on this domain to the LibreWaterNet home page.
+# Deliberately does NOT append the path: none of these pages exist there, so
+# appending would 301 a live URL onto a 404. Tom, 2026-09-12.
+RewriteCond %{HTTP_HOST} ^(www\.)?not\-epanet\.org$
+RewriteRule ^ https://librewaternet.org/ [R=301,L]
+
+# BLANKET DOT-PATH RULE. Every request whose path carries a directory segment beginning with a dot
+# is 404ed here, in a file this repository ships. `.git` is not a tracked directory, so no check
+# reading the checkout can ever see it, and the 403 it returns today comes from a host-wide setting
+# we do not own.
+#
+# **`<FilesMatch "^\.">` WOULD NOT COVER THIS: it matches FILENAMES**, so `.git/config` is served as
+# an ordinary file because it is not itself a dotfile. That exact mistake is how
+# hawsedc.com/engcalcs/.claude/settings.json reached the open web on 2026-09-16.
+#
+# mod_alias, so it needs no AllowOverride Options and cannot 500 the site. A REDIRECT IS NOT A
+# DENIAL: the rules above send visitors away, this one refuses.
+RedirectMatch 404 "/\.(?!well-known/)[^/]+/"
+
+# php -- BEGIN cPanel-generated handler, do not edit
+# Set the “ea-php83” package as the default “PHP” programming language.
+<IfModule mime_module>
+  AddHandler application/x-httpd-ea-php83 .php .php8 .phtml
+</IfModule>
+# php -- END cPanel-generated handler, do not edit
