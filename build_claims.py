@@ -118,6 +118,8 @@ SHELL = """<!doctype html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Every factual assertion on not-epanet.org, one per row, with the source it rests on. Generated from the site's own claims ledger.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="icon-192.png" type="image/png" sizes="192x192">
+<link rel="apple-touch-icon" href="icon-192.png">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
