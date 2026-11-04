@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <title>Not EPANET</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="A doorway to free water network modelling software, and a plain statement of what it is not. Not EPANET, not affiliated with the US EPA, and deeply dependent on both.">
+<meta name="description" content="A doorway to free water network modelling software, and a plain statement of what it is not. Not EPANET, not affiliated with the US EPA, and deeply indebted to both.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="icon" href="icon-192.png" type="image/png" sizes="192x192">
 <link rel="apple-touch-icon" href="icon-192.png">
@@ -104,52 +104,14 @@
 	</div>
 
 	<div class="item">
-		<h3>1. We are deeply dependent on EPANET</h3>
-		<p>Not inspired by it, and not merely compatible with it: dependent on it. The specifics, each one
-		listed with its source on the <a href="claims.html">claims page</a>:</p>
-		<ul class="facts">
-			<li><b>The engine is EPANET's, and it ships inside the page.</b> A 679 KB browser
-			build of OWA-EPANET 2.3.5, released 2025-02-20, loaded on demand. We wrote a drawing
-			surface and put EPANET underneath it.</li>
-			<li><b>Most of the answers were first possible because it is there.</b> Extended period
-			simulation, water age, source trace, chemical decay, pump energy, rule-based controls
-			and pressure-reducing, pressure-sustaining and flow-control valves all ran through the
-			EPANET engine before our own solver could do any of them. Our own solver now runs them
-			too, built one piece at a time and checked against EPANET's answers at every step, and
-			EPANET stays the default.</li>
-			<li><b>The interchange format is EPANET's.</b> We read and write EPANET's own
-			<code>.inp</code> file, from <code>[TITLE]</code> to <code>[END]</code> across the
-			sections we support, and a value you did not edit comes back out character for
-			character.
-			<span class="qualify">We have a format of our own too: a project saves as JSON,
-			because an <code>.inp</code> cannot hold scenarios, saved profile paths, the background
-			picture itself, map tiles and your view, a Text label with more than one line, or
-			longitude and latitude. Everything an <code>.inp</code> can carry still round-trips
-			through one, and the five things it cannot are reported rather than dropped.</span></li>
-			<li><b>We check ourselves against EPA's own published answers.</b> Our extended period
-			simulation is compared against EPA's own report for its Net3 example network: 2,425 head
-			comparisons across 25 reporting steps, agreeing to 0.005 ft. Water quality is
-			anchored on the same report, worst difference 0.105%. Pump energy is anchored on that
-			report's own energy table. EPANET is the truth we are measured against.</li>
-			<li><b>Even the arithmetic is EPANET's.</b> Our one Hazen-Williams coefficient pair is
-			derived from EPANET's <code>h = 4.727 L Q^1.852 / (C^1.852 d^4.871)</code>, not from
-			the more commonly quoted metric restatement. The two disagree by up to 0.12% from
-			50 mm to 2 m, and we chose to agree with EPANET, because EPANET is what our users will
-			check us against.</li>
-			<li><b>The vocabulary is EPANET's.</b> Junction, reservoir, tank, pipe, pump, valve.
-			Extended period simulation. Trials and iterations, static pressure, drawdown, converge.
-			The four curve types. The grammar of a rule. What happens when you change a unit. An
-			engineer who knows EPANET should not have to learn a second dialect from us, and a
-			build check fails when we start writing one.</li>
-			<li><b>The interface is inspired by and informed by EPANET's.</b> Its curve editor
-			and its table of assets are where ours came from, and its five map colours are in our
-			palette unsoftened, though our default is Viridis. Not downstream of it: scenarios, a
-			world map, find and replace, flexible multi-labels, a menu system we hope is easier,
-			and being a web page rather than a Windows program. Some of that is better and some is
-			just different.</li>
-		</ul>
-		<p>That is the dependency graph. If EPANET had not existed, or had not been given
-		away, this project would not exist.</p>
+		<h3>1. We owe EPANET a great deal</h3>
+		<p>EPANET gave us the file format, the vocabulary, and the answers we are checked
+		against. We read and write EPANET&rsquo;s own <code>.inp</code> file, we use its words
+		for things, and our own solver, which runs extended periods, water quality, every
+		valve type, rules, and patterns, was matched against EPANET 2.3.5 on every shipped
+		example and is compared with EPA&rsquo;s own Net3 report. EPANET itself, as OWA-EPANET
+		2.3.5, is offered and is the default engine setting. If EPANET had not
+		existed, or had not been given away, this project would not exist.</p>
 	</div>
 
 	<div class="item">
@@ -171,17 +133,14 @@
 
 	<div class="item">
 		<h3>3. We are new, with all that implies</h3>
-		<p>Development started on 28 July 2026. As of 1 September 2026 the software has carried
-		one real-world design report. Counting the defects found and fixed since would tell you
-		nothing you could use; what those two dates tell you is that the ones nobody has hit yet
-		are still in there.</p>
+		<p>Development started on 28 July 2026.</p>
 		<p>One claim about ourselves a future surprise cannot falsify:</p>
 		<blockquote>
 			<p>We are what we are, and it&rsquo;s good and useful and usable. But we have no idea
 			what we are not and what we don&rsquo;t know.</p>
 			<footer class="attrib">Tom Haws, 2026-08-22</footer>
 		</blockquote>
-		<p>We do not publish a completeness claim against EPANET, and we never will. EPANET has
+		<p>We do not publish a completeness claim against EPANET. EPANET has
 		depth we keep discovering by accident.</p>
 	</div>
 
@@ -247,7 +206,7 @@
 		<h3>Open Water Analytics</h3>
 		<p>EPANET's development continued in the open after EPA's 2.2, as a community effort in
 		collaboration with EPA. Open Water Analytics released EPANET 2.3 on 2024-07-17 and 2.3.5
-		on 2025-02-20. <b>2.3.5 is the engine our software runs.</b> Every volunteer who
+		on 2025-02-20. <b>2.3.5 allowed our project to start, and is one engine our software runs.</b> Every volunteer who
 		has filed an issue or a fix in that repository has, without knowing it, fixed something
 		for us.</p>
 	</div>
@@ -319,8 +278,7 @@
 
 	<div class="item">
 		<h3>EPANET's own interface</h3>
-		<p>It is customary in this field to describe EPANET's user interface as dated. We decline
-		to. It is the interface that taught most working modellers what a network model is, and
+		<p>It is the interface that taught most working modellers what a network model is, and
 		ours is informed by it deliberately, item by item, in honesty item 1 above.</p>
 	</div>
 
