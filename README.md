@@ -1,4 +1,6 @@
-# not-epanet.org
+# not-epanet.org (RETIRED)
+
+**Retired 2026-11-05 on Tom's word.** The domain 301s every path to https://epanet-plus-plus.org/ through `.htaccess`, the only file that still does anything. Nothing here is maintained; landing copy lives in `~/webdev/epanet-plus-plus.org`.
 
 A three-page static gateway site. Its job is to send a visitor to
 [LibreWaterNet.org](https://librewaternet.org) and to the looped network editor at

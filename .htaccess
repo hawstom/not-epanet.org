@@ -1,4 +1,4 @@
-# not-epanet.org -- RETIRED. Every path on this domain 301s to librewaternet.org.
+# not-epanet.org -- RETIRED. Every path on this domain 301s to epanet-plus-plus.org (Tom, 2026-11-05).
 #
 # **THIS FILE LIVED ONLY ON THE SERVER, UNTRACKED, UNTIL 2026-09-18.** The redirect that retires the
 # domain, and the cPanel handler block that pins the PHP version, existed nowhere in this repository:
@@ -12,16 +12,16 @@
 RewriteEngine on
 RewriteCond %{HTTP_HOST} ^not\-epanet\.constructionnotesmanager\.com$ [OR]
 RewriteCond %{HTTP_HOST} ^www\.not\-epanet\.constructionnotesmanager\.com$
-RewriteRule ^/?$ "https\:\/\/librewaternet\.org\/" [R=301,L]
+RewriteRule ^/?$ "https\:\/\/epanet-plus-plus\.org\/" [R=301,L]
 RewriteCond %{HTTP_HOST} ^not\-epanet\.org$ [OR]
 RewriteCond %{HTTP_HOST} ^www\.not\-epanet\.org$
-RewriteRule ^/?$ "https\:\/\/librewaternet\.org\/" [R=301,L]
+RewriteRule ^/?$ "https\:\/\/epanet-plus-plus\.org\/" [R=301,L]
 
-# Retire every remaining path on this domain to the LibreWaterNet home page.
+# Retire every remaining path on this domain to the EPANET++ home page.
 # Deliberately does NOT append the path: none of these pages exist there, so
 # appending would 301 a live URL onto a 404. Tom, 2026-09-12.
 RewriteCond %{HTTP_HOST} ^(www\.)?not\-epanet\.org$
-RewriteRule ^ https://librewaternet.org/ [R=301,L]
+RewriteRule ^ https://epanet-plus-plus.org/ [R=301,L]
 
 # BLANKET DOT-PATH RULE. Every request whose path carries a directory segment beginning with a dot
 # is 404ed here, in a file this repository ships. `.git` is not a tracked directory, so no check
